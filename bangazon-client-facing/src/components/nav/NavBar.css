@@ -1,0 +1,22 @@
+/* navbar css */
+nav {
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-left-container {
+    display: flex;
+}
+
+.search-label {
+    margin-right: 10px;
+}
+
+.search-input {
+    height: 18.18px;
+}
+
+.nav-home {
+    margin-right: 8em;
+}
