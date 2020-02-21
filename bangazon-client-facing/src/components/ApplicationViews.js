@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom"
 // import Register from "./auth/Register"
 // import Login from "./auth/Login"
 import ProductList from "./product/ProductList"
+import PaymentTypeForm from "./paymentType/PaymentTypeForm"
 
 class ApplicationViews extends Component {
 
@@ -13,6 +14,11 @@ class ApplicationViews extends Component {
         <Route
           exact path="/" render={props => {
             return <ProductList {...props} />
+          }}
+        />
+         <Route
+          exact path="/add/paymenttype" render={props => {
+            return <PaymentTypeForm {...props} />
           }}
         />
         {/* <Route

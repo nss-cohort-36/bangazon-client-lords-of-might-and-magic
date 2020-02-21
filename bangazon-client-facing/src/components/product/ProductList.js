@@ -14,7 +14,7 @@ class ProductList extends Component {
 
     getAvailableProducts = () => {
         //need to make fetchProducts in utility TO-DO
-        ApiManager.fetchProducts()
+        ApiManager.get("products")
         .then((products) => {
             this.setState({products: products})
         })
