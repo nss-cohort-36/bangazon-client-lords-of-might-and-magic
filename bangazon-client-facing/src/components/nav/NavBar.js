@@ -6,7 +6,7 @@ class NavBar extends Component {
 
     render() {
         return (
-            <nav class="pa3 pa4-ns">
+            <nav className="pa3 pa4-ns">
                 <div className="nav-left-container">
                     <a className="link dim black b f6 f5-ns dib mr3 nav-home" href="#" title="Home">Bangazon</a>
                     <div className="search-container">
