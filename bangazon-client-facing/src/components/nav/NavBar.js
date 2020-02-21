@@ -15,7 +15,7 @@ class NavBar extends Component {
                     </div>
                 </div>
                 <div>
-                    <a className="link dim gray    f6 f5-ns dib mr3" href="#" title="Home">Sell Product</a>
+                    <a className="link dim gray    f6 f5-ns dib mr3" href="/sell-product" title="Home">Sell Product</a>
                     <a className="link dim gray    f6 f5-ns dib mr3" href="#" title="About">Shopping Cart</a>
                     <a className="link dim gray    f6 f5-ns dib mr3" href="#" title="Store">Account</a>
                 </div>

@@ -6,7 +6,10 @@ class Bangazon extends Component {
 
   render() {
     return (
-      <NavBar />
+      <>
+        <NavBar />
+        <ApplicationViews />
+      </>
     )
   }
 
