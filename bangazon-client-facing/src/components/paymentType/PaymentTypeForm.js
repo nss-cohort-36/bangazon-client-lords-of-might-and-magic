@@ -17,11 +17,14 @@ class PaymentTypeForm extends Component {
     }
 
     savePaymentForm = () => {
+        const date = new Date()
         const newPaymentType = {
             "merchant_name": this.state.merchantName,
             "acct_number": this.state.accountNumber,
-            "expiration_date": this.state.expDate
+            "expiration_date": this.state.expDate,
+            "created_at": `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
         }
+        console.log(newPaymentType.created_at)
         ApiManager.post("paymenttypes", newPaymentType)
         .then(() => this.props.history.push('/'))
     }
@@ -38,8 +41,6 @@ class PaymentTypeForm extends Component {
                     <button onClick={this.savePaymentForm}>Save</button>
                     </fieldset>
                 </div>
-                  
-                
             </>
         )
     }
