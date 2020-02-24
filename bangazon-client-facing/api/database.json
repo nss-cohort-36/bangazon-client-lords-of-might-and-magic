@@ -70,5 +70,12 @@
         "imagepath": "picture.jpg",
         "createdAt": "date",
         "productTypeId": 1
-    }]
+    }],
+    "paymenttypes": [
+        {
+            "merchantName": "fred",
+            "accountNumber": 123,
+            "expDate": "today"
+        }
+    ]
 }

@@ -1,9 +1,10 @@
 import { Route } from "react-router-dom"
 import React, {Component } from "react"
 import { withRouter } from "react-router-dom"
-// import Register from "./auth/Register"
-// import Login from "./auth/Login"
+import Register from "./auth/Register"
+import Login from "./auth/Login"
 import ProductList from "./product/ProductList"
+import PaymentTypeForm from "./paymentType/PaymentTypeForm"
 
 class ApplicationViews extends Component {
 
@@ -15,7 +16,12 @@ class ApplicationViews extends Component {
             return <ProductList {...props} />
           }}
         />
-        {/* <Route
+         <Route
+          exact path="/add/paymenttype" render={props => {
+            return <PaymentTypeForm {...props} />
+          }}
+        />
+        <Route
           path="/register" render={props => {
             return <Register {...props} />
           }}
@@ -24,7 +30,7 @@ class ApplicationViews extends Component {
           path="/login" render={props => {
             return <Login {...props} />
           }}
-        /> */}
+        />
       </React.Fragment>
     )
   }
