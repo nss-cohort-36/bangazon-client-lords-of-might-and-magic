@@ -42,7 +42,7 @@ class NavBar extends Component {
                     </fieldset>
                 </div>
                 <div>
-                    <a className="link dim gray    f6 f5-ns dib mr3" href="#" title="Home">Sell Product</a>
+                    <a className="link dim gray    f6 f5-ns dib mr3" href="/sell-product" title="Home">Sell Product</a>
                     <a className="link dim gray    f6 f5-ns dib mr3" href="#" title="About">Shopping Cart</a>
                     <a className="link dim gray    f6 f5-ns dib mr3" href="#" title="Store">Account</a>
                     {isAuthenticated() ? <a onClick={this.handleLogout}>Logout</a>

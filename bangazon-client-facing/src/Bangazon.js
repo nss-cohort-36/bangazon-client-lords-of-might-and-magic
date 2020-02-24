@@ -9,8 +9,8 @@ class Bangazon extends Component {
   render() {
     return (
       <>
-      <NavBar />
-      <ApplicationViews/>
+        <NavBar />
+        <ApplicationViews/>
       </>
     )
   }
