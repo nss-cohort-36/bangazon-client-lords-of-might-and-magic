@@ -11,6 +11,7 @@ class Bangazon extends Component {
 
   changeDisplay = newDisplay => this.setState({sideDisplay: newDisplay})
 
+
   render() {
     return (
       <>

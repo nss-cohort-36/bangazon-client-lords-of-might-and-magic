@@ -1,0 +1,21 @@
+/* sell product form */
+.lda-label {
+    margin-right: 10px;
+}
+
+.product-type-container {
+    display: flex;
+}
+
+.product-type-select {
+    margin-bottom: 8px;
+}
+
+.product-types-input {
+    max-width: 462px;
+}
+
+.product-header {
+    margin-left: 32px;
+    margin-bottom: 0;
+}

@@ -1,9 +1,13 @@
-import { Route } from "react-router-dom"
-import React, {Component } from "react"
+import { Route, Redirect } from "react-router-dom"
+import React, { Component } from "react"
 import { withRouter } from "react-router-dom"
-// import Register from "./auth/Register"
-// import Login from "./auth/Login"
+import Register from "./auth/Register"
+import Login from "./auth/Login"
 import ProductList from "./product/ProductList"
+import Order from "./Order/order"
+import PaymentTypeForm from "./paymentType/PaymentTypeForm"
+import SellProductForm from "./product/SellProductForm"
+import { isAuthenticated } from "./helpers/simpleAuth"
 
 class ApplicationViews extends Component {
 
@@ -15,7 +19,27 @@ class ApplicationViews extends Component {
             return <ProductList {...props} />
           }}
         />
-        {/* <Route
+        <Route
+          exact path="/name/:searchTerm" render={props => {
+            return <ProductList {...props} isNameSearch={true}/>
+          }}
+        />
+        <Route
+          exact path="/city/:searchTerm" render={props => {
+            return <ProductList {...props} isCitySearch={true}/>
+          }}
+          />
+          <Route
+            exact path="/shoppingcart" render={props => {
+            return <Order {...props} />
+          }}
+        />
+         <Route
+          exact path="/add/paymenttype" render={props => {
+            return <PaymentTypeForm {...props} />
+          }}
+        />
+        <Route
           path="/register" render={props => {
             return <Register {...props} />
           }}
@@ -24,7 +48,14 @@ class ApplicationViews extends Component {
           path="/login" render={props => {
             return <Login {...props} />
           }}
-        /> */}
+        />
+        <Route exact path="/sell-product" render={(props) => {
+          if(isAuthenticated()) {
+            return <SellProductForm {...props} />
+          } else {
+            return <Redirect to="/" />
+          }
+        }} />
       </React.Fragment>
     )
   }
