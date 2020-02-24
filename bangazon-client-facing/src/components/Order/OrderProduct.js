@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 
 
-class ShoppingCartProduct extends Component {
+class OrderProduct extends Component {
 
     render() {
         return (
@@ -10,8 +10,9 @@ class ShoppingCartProduct extends Component {
                 <section>
                     <p>
                         <span>
-                            {this.props.}
+                            {this.props.item.product.name}
                         </span>
+                        <button>Delete Product</button>
                     </p>
                 </section>
 
@@ -19,3 +20,5 @@ class ShoppingCartProduct extends Component {
         )
     }
 }
+
+export default OrderProduct

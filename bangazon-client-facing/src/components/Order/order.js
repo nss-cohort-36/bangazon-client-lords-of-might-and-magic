@@ -1,6 +1,7 @@
 import React, { Component } from "react"
-import ShoppingCartProduct from "./ShoppingCartProduct"
-import { isAuthenticated } from "../helpers/simpleAuth"
+import OrderProduct from "./OrderProduct"
+// import { isAuthenticated } from "../helpers/simpleAuth"
+import ApiManager from "../utility/ApiManager"
 
 class Order extends Component {
 
@@ -10,22 +11,26 @@ class Order extends Component {
     }
 
     componentDidMount() {
-        this.getOrderProducts()
+        this.getOrder()
     }
 
-    getOrderProducts = () => {
-        if (isAuthenticated()) {
-            fetch('http://localhost:8000/', {
+    getOrder = () => {
+        // if (isAuthenticated())
+            fetch('http://localhost:5002/orderproduct?orderId=1&_expand=product', {
                 "method": "GET",
                 "headers": {
-                    "Accept": "application/json",
-                    "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
-                }
+                    "Accept": "application/json"
+                  }
             })
             .then(response => response.json())
             .then(items => this.setState({orderProducts: items}))
-        }
+        
     }
+
+    // getProducts = () => {
+    //     ApiManager.fetchProducts()
+    //     .then(products => this.setState({orderProducts: products}))
+    // }   
 
     render() {
         return (
@@ -33,12 +38,14 @@ class Order extends Component {
                 <article>
                     {
                         this.state.orderProducts.map(item =>
-                            <ShoppingCartProduct
+                            <OrderProduct
                                 key={item.id}
                                 item={item}
+                                {...this.props}
                             />)
                     }
                 </article>
+                <button>Cancel Order</button>
             </>
         )
     }
