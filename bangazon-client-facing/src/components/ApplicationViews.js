@@ -16,6 +16,16 @@ class ApplicationViews extends Component {
             return <ProductList {...props} />
           }}
         />
+        <Route
+          exact path="/name/:searchTerm" render={props => {
+            return <ProductList {...props} isNameSearch={true}/>
+          }}
+        />
+        <Route
+          exact path="/city/:searchTerm" render={props => {
+            return <ProductList {...props} isCitySearch={true}/>
+          }}
+        />
          <Route
           exact path="/add/paymenttype" render={props => {
             return <PaymentTypeForm {...props} />
