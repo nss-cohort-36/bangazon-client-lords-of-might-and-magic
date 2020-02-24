@@ -10,7 +10,7 @@ class OrderProduct extends Component {
                 <section>
                     <p>
                         <span>
-                            {this.props.item.product.name}
+                            {this.props.item.name}
                         </span>
                         <button>Delete Product</button>
                     </p>
