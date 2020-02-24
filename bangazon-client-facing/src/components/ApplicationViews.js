@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom"
+import { Route, Redirect } from "react-router-dom"
 import React, { Component } from "react"
 import { withRouter } from "react-router-dom"
 import Register from "./auth/Register"
@@ -6,6 +6,7 @@ import Login from "./auth/Login"
 import ProductList from "./product/ProductList"
 import PaymentTypeForm from "./paymentType/PaymentTypeForm"
 import SellProductForm from "./product/SellProductForm"
+import { isAuthenticated } from "./helpers/simpleAuth"
 
 class ApplicationViews extends Component {
 
@@ -33,7 +34,11 @@ class ApplicationViews extends Component {
           }}
         />
         <Route exact path="/sell-product" render={(props) => {
-          return <SellProductForm {...props} />
+          if(isAuthenticated()) {
+            return <SellProductForm {...props} />
+          } else {
+            return <Redirect to="/" />
+          }
         }} />
       </React.Fragment>
     )
