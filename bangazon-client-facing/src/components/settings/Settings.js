@@ -12,7 +12,9 @@ export default () => {
             </h2>
         </summary>
         <div className="f6">
-            <p className="pointer dim blue">Add a Payment Type</p>
+            <a className="pointer dim blue" href='/addpaymenttype' title="Add Payment Type Form">
+              Add a Payment Type
+            </a>
           	<p>Payment Type 1</p>
           	<p>Payment Type 2</p>
         </div>
