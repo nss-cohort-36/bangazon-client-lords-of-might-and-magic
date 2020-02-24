@@ -17,12 +17,13 @@ class PaymentTypeForm extends Component {
     }
 
     savePaymentForm = () => {
-        const newPaymentForm = {
+        const newPaymentType = {
             "merchant_name": this.state.merchantName,
             "acct_number": this.state.accountNumber,
             "expiration_date": this.state.expDate
         }
-        ApiManager.post("paymenttypes", newPaymentForm)
+        ApiManager.post("paymenttypes", newPaymentType)
+        .then(() => this.props.history.push('/'))
     }
 
     render() {
