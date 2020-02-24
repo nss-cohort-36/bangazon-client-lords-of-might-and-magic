@@ -6,9 +6,12 @@ class ProductCard extends Component {
     return (
       <>
         <section >
-          <p >
+          <h3 >
             {this.props.product.name}
-          </p>
+          </h3>
+          <p>Cost: ${this.props.product.price}</p>
+          <div>Seller Description:</div>
+          <div>{this.props.product.description}</div>
         </section>
       </>
     )
