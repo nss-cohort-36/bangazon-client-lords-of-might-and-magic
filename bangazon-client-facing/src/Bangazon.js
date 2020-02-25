@@ -21,7 +21,7 @@ class Bangazon extends Component {
 		        <ApplicationViews />
           </article>
           <article className="w-30 bg-light-gray">
-		        <SidePanel displayTitle={this.state.sideDisplay}/>
+		        <SidePanel changeDisplay={this.changeDisplay} displayTitle={this.state.sideDisplay}/>
           </article>
 		    </section>
       </>

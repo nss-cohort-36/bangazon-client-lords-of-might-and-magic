@@ -10,6 +10,14 @@ const ApiManager = {
           })
             .then(response => response.json())
     },
+    getOne : function(endpoint, id) {
+      return fetch(`http://localhost:8000/${endpoint}/${id}`, {
+          "headers": {
+            "Accept": "application/json"
+          }
+        })
+          .then(response => response.json())
+  },
     post : function(endpoint, object) {
       return fetch(`http://localhost:8000/${endpoint}`, {
         method: "POST",
