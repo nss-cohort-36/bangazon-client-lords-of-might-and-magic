@@ -4,16 +4,8 @@ nav {
     justify-content: space-between;
 }
 
-.nav-left-container {
-    display: flex;
-}
-
-.search-label {
-    margin-right: 10px;
-}
-
 .search-input {
-    height: 18.18px;
+    height: 24px;
 }
 
 .nav-home {
