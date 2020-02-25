@@ -47,9 +47,9 @@ export default class Settings extends Component {
               </h2>
           </summary>
           <div className="f6">
-              <p className="pointer dim blue" href='/add/paymenttype' title="Add Payment Type Form">
+              <a className="link dim blue" href='/add/paymenttype' title="Add Payment Type Form">
                 Add a Payment Type
-              </p>
+              </a>
             	{this.state.paymentTypes.map(type => {
                 return (
                   <div key={type.id}>
