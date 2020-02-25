@@ -11,7 +11,7 @@ class SellProductForm extends Component {
         quantity: 0,
         location: "",
         imagePath: "",
-        productTypeId: 0,
+        productTypeId: 1,
         localDeliveryAvailable: false,
         producttypes: []
     }
@@ -43,8 +43,8 @@ class SellProductForm extends Component {
             }
                         
             ApiManager.post('products', newProduct)
-                .then(() => {
-                this.props.history.push('/')
+                .then((newProduct) => {
+                this.props.history.push(`/product/${newProduct.id}`)
                 })
         }
     }

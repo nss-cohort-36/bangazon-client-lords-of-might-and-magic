@@ -1,6 +1,5 @@
 import { Route, Redirect } from "react-router-dom"
 import React, { Component } from "react"
-import { withRouter } from "react-router-dom"
 import Register from "./auth/Register"
 import Login from "./auth/Login"
 import ProductList from "./product/ProductList"
@@ -8,6 +7,7 @@ import Order from "./Order/order"
 import PaymentTypeForm from "./paymentType/PaymentTypeForm"
 import SellProductForm from "./product/SellProductForm"
 import { isAuthenticated } from "./helpers/simpleAuth"
+import ProductDetail from "./product/ProductDetail"
 
 class ApplicationViews extends Component {
 
@@ -22,6 +22,11 @@ class ApplicationViews extends Component {
         <Route
           exact path="/name/:searchTerm" render={props => {
             return <ProductList {...props} isNameSearch={true}/>
+          }}
+        />
+        <Route
+          exact path="/product/:productId(\d+)" render={props => {
+            return <ProductDetail {...props} />
           }}
         />
         <Route
