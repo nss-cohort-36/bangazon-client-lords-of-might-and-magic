@@ -13,7 +13,6 @@ class PaymentTypeForm extends Component {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange)
-        this.setState({changeOccurred: true})
     }
 
     savePaymentForm = () => {
@@ -22,6 +21,7 @@ class PaymentTypeForm extends Component {
             "acct_number": this.state.accountNumber,
             "expiration_date": this.state.expDate
         }
+        console.log(newPaymentType.expiration_date)
         ApiManager.post("paymenttypes", newPaymentType)
         .then(() => this.props.history.push('/'))
     }
@@ -32,9 +32,9 @@ class PaymentTypeForm extends Component {
                 <div id="paymentForm">
                     <legend htmlFor="paymentType">Add Payment Type</legend>
                     <fieldset id="paymentType">
-                    <input id="merchantName" type="text" placeholder="Institution Name"/>
-                    <input id="accountNumber" type="text" placeholder="Account Number"/>
-                    <input id="expDate" type="date" />
+                    <input onChange={this.handleFieldChange} id="merchantName" type="text" placeholder="Institution Name"/>
+                    <input onChange={this.handleFieldChange} id="accountNumber" type="text" placeholder="Account Number"/>
+                    <input onChange={this.handleFieldChange} id="expDate" type="date" />
                     <button onClick={this.savePaymentForm}>Save</button>
                     </fieldset>
                 </div>
