@@ -23,9 +23,9 @@ class SellProductForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()   
-        if (event.target.checkValidity()){
+        if (!event.target.checkValidity()){
             return alert('please fill out form properly')
-        }else {
+        }else{
             const newProduct = {
                 name: this.state.name,
                 price: this.state.price,
@@ -34,41 +34,39 @@ class SellProductForm extends Component {
                 location: this.state.location,
                 image_path: this.state.imagePath,
                 product_type_id: this.state.productTypeId
-                }
-                
+            }
+                        
             ApiManager.post('products', newProduct)
                 .then(() => {
-                    this.props.history.push('/')
+                this.props.history.push('/')
                 })
         }
-    
-
     }
 
     render() {
         return (
             <>
                 <h2 className="f6 gray fw2 ttu tracked product-header">List a Product for Sell</h2>
-                <form className="pa4 black-80" noValidate>
+                <form className="pa4 black-80" onSubmit={this.handleSubmit} >
                     <div className="measure">
                         <label for="name" className="f6 b db mb2">Name</label>
-                        <input id="name" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} noValidate />
+                        <input id="name" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} required />
                     </div>
                     <div className="measure">
                         <label for="price" className="f6 b db mb2">Price</label>
-                        <input id="price" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} noValidate />
+                        <input id="price" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} required />
                     </div>
                     <div className="measure">
                         <label for="description" className="f6 b db mb2">Description</label>
-                        <input id="description" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} noValidate />
+                        <input id="description" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} required />
                     </div>
                     <div className="measure">
                         <label for="quantity" className="f6 b db mb2">Quantity</label>
-                        <input id="quantity" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} noValidate />
+                        <input id="quantity" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} required />
                     </div>
                     <div className="measure">
                         <label for="location" className="f6 b db mb2">City</label>
-                        <input id="location" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} />
+                        <input id="location" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} required />
                     </div>
                     <div className="flex items-center mb2">
                         <label for="localDeliveryAvailable" className="lh-copy lda-label">Local Delivery Available</label>
@@ -76,18 +74,18 @@ class SellProductForm extends Component {
                     </div>
                     <div className="measure">
                         <label for="imagePath" className="f6 b db mb2">Image Path</label>
-                        <input id="imagePath" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} noValidate />
+                        <input id="imagePath" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} required/>
                     </div>
                     <div className="measure">
                         <label className="f6 b db mb2">Type</label>
-                        <input list="productTypeList" name="productTypeId" className="input-reset ba b--black-20 pa2 mb2 db w-100 product-types-input" onChange={this.handleFieldChange} id="productTypeId" noValidate />
+                        <input list="productTypeList" name="productTypeId" className="input-reset ba b--black-20 pa2 mb2 db w-100 product-types-input" onChange={this.handleFieldChange} id="productTypeId" required />
                         <datalist id="productTypeList">
                             <option value={1}>Product type 1</option>
                             <option value={2}>Product type 2</option>
                             <option value={3}>Product type 3</option>
                         </datalist>
                     </div>
-                    <button onClick={this.handleSubmit}>Submit</button>
+                    <button>Submit</button>
                 </form>
             </>
         )
