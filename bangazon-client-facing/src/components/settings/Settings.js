@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { isAuthenticated } from "../helpers/simpleAuth"
 import './Settings.css'
 
-// needs to receive the payment types as an argument
 export default class Settings extends Component {
   state = {
       paymentTypes: []
