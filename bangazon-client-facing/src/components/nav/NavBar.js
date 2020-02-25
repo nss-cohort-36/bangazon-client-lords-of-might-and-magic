@@ -29,39 +29,51 @@ class NavBar extends Component {
     
     render() {
         return (
-            <nav className="pa3 pa4-ns avenir">
-                <div className="nav-left-container">
-                    <a className="link dim black b f6 f5-ns dib mr3 nav-home" href="#" title="Home">Bangazon</a>
-                    <fieldset>
-                    <div className="search-container">
-                        <label className="search-label">Search</label>
-                        <input onChange={this.handleInputChange} id="searchItem" className="search-input" type="text"></input>
+            <nav className="pa3 pa4-ns avenir f6 f5-ns">
+                <div className="flex">
+                    <p className="f5 pointer dim b dib mh3 pt1" href="/" title="Home">Bangazon
+                    </p>
+                    <div>
+                        <p className="dib ml5 mr1">
+                            <label className="mr1 ">Search:</label>
+                            <input 
+                                className="search-input input-reset ba b--black-20 mr1"
+                                onChange={this.handleInputChange} 
+                                id="searchItem" 
+                                type="text">
+                            </input>
+                        </p>
+                        <button 
+                            className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-blue i' 
+                            id="nameSearch" 
+                            onClick={this.handleNameSearch}>
+                            Search by Product Name
+                        </button>
+                        <button 
+                            className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-blue mh1 i'
+                            id="citySearch" 
+                            onClick={this.handleCitySearch}>
+                            Search by City
+                        </button>
                     </div>
-                    <button id="nameSearch" onClick={this.handleNameSearch}>Search by Product Name</button>
-                    <button id="citySearch" onClick={this.handleCitySearch}>Search by City</button>
-                    </fieldset>
                 </div>
-                <div className="f6 f5-ns">
+                <div className='pt1'>
                     {isAuthenticated() 
-                        ? <a className="link dim gray dib mr4" href="/sell-product" title="Sell Product">Sell Product</a>
+                        ? <p className="pointer dim dib mr4" href="/sell-product" title="Sell Product">Sell Product</p>
                         : null}
-                    <a 
-                        className="link dim black dib mr4" 
-                        href="#" 
-                        title="Shopping Cart"
+                    <p 
+                        className="pointer dim dib mr4" 
                         onClick={() => this.props.changeDisplay("Shopping Cart")}>
                         Shopping Cart
-                    </a>
-                    <a 
-                        className="link dim black dib mr4"
-                        href='#'
-                        title='My Account'
+                    </p>
+                    <p 
+                        className="pointer dim dib mr4"
                         onClick={() => this.props.changeDisplay("Settings")}>
                         My Account
-                    </a>
+                    </p>
                     {isAuthenticated() 
-                        ? <a onClick={this.handleLogout}>Logout</a>
-                        : <a className="link dim gray dib mr4" href="/login">Login</a>}
+                        ? <a className="pointer dim dib mr4" onClick={this.handleLogout}>Logout</a>
+                        : <a className="pointer dim dib mr4" href="/login">Login</a>}
                 </div>
             </nav>
         )
