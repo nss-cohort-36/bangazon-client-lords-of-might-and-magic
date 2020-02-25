@@ -23,7 +23,11 @@ export default class Settings extends Component {
 
   deletePaymentType = id => {
     fetch(`http://localhost:8000/paymenttypes/${id}`, {
-      "method": 'DELETE'
+      "method": 'DELETE',
+        "headers": {
+          "Accept": "application/json",
+          "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
+        }
     })
     .then(r => r.json());
 
