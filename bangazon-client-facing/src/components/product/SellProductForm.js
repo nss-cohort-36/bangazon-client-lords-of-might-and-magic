@@ -72,7 +72,7 @@ class SellProductForm extends Component {
                     </div>
                     <div className="flex items-center mb2">
                         <label for="localDeliveryAvailable" className="lh-copy lda-label">Local Delivery Available</label>
-                        <input className="mr2" type="checkbox" id="localDeliveryAvailable" noValidate />
+                        <input className="mr2" type="checkbox" id="localDeliveryAvailable"  />
                     </div>
                     <div className="measure">
                         <label for="imagePath" className="f6 b db mb2">Image Path</label>
