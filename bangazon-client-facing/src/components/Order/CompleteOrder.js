@@ -8,9 +8,11 @@ class CompleteOrder extends Component {
 
     state = {
         paymentTypes: [],
-        paymentTypeId: ''
+        paymentTypeId: '',
+        customerId: ''
     }
 
+    loggedInUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
 
     componentDidMount() {
         this.getPaymentTypes()

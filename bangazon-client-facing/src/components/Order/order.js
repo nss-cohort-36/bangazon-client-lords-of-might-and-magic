@@ -49,8 +49,8 @@ class Order extends Component {
                             />)
                     }
                 </article>
-                <button>Cancel Order</button>
-                <button onClick = {() => this.props.changeDisplay("Complete Order")}>Complete Order</button>
+                <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-blue i'>Cancel Order</button>
+                <button onClick = {() => this.props.changeDisplay("Complete Order")} className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-blue i'>Complete Order</button>
             </>
         )
     }
