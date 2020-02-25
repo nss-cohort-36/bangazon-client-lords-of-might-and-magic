@@ -35,11 +35,13 @@ export default class Settings extends Component {
               </h2>
           </summary>
           <div className="f6">
-              <a className="pointer dim blue" href='/add/paymenttype' title="Add Payment Type Form">
+              <p className="pointer dim blue" href='/add/paymenttype' title="Add Payment Type Form">
                 Add a Payment Type
-              </a>
+              </p>
             	{this.state.paymentTypes.map(type => {
-                  console.log(type)
+                  return (
+                    <p className=''>{type.merchant_name} {type.acct_number}</p>
+                  )
               })}
           </div>
         </details>
