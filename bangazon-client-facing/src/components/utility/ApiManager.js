@@ -3,7 +3,7 @@
 
 const ApiManager = {
     get : function(endpoint) {
-        return fetch(`http://localhost:5002/${endpoint}`, {
+        return fetch(`http://localhost:8000/${endpoint}`, {
             "headers": {
               "Accept": "application/json"
             }

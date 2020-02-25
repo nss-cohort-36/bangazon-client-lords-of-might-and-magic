@@ -16,6 +16,7 @@ class ProductList extends Component {
         //need to make fetchProducts in utility TO-DO
         ApiManager.get("products")
         .then((products) => {
+            
             this.setState({products: products})
         })
     }
@@ -26,7 +27,19 @@ class ProductList extends Component {
                 <article className="explorerList">
                     <h3>Available Products</h3>
                     {
-                        this.state.products.map(product =>
+                        this.props.isCitySearch ?
+                        this.state.products.filter(product => product.location.includes(this.props.match.params.searchTerm)).map(product =>
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                            />)
+                        : this.props.isNameSearch ?
+                        this.state.products.filter(product => product.name.includes(this.props.match.params.searchTerm)).map(product =>
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                            />)
+                        : this.state.products.map(product =>
                             <ProductCard
                                 key={product.id}
                                 product={product}
