@@ -85,7 +85,7 @@ class SellProductForm extends Component {
                     <div className="measure">
                         
                         <label className="f6 b db mb2" htmlFor="productTypeList">Product Type</label>
-                        <select className="input-reset ba b--black-20 pa2 mb2 db w-100" id="productTypeList">
+                        <select onChange={this.handleFieldChange} className="input-reset ba b--black-20 pa2 mb2 db w-100" id="productTypeId">
                             {this.state.producttypes.map(type => 
                                 <option key={type.id} value={type.id}>{type.name}</option>
                             )}
