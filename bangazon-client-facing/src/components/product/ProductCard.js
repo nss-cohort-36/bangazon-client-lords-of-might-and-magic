@@ -6,9 +6,9 @@ class ProductCard extends Component {
     return (
       <>
         <section >
-          <h3 >
+          <a href={`/product/${this.props.product.id}`}>
             {this.props.product.name}
-          </h3>
+          </a>
           <p>Cost: ${this.props.product.price}</p>
           <div>Seller Description:</div>
           <div>{this.props.product.description}</div>

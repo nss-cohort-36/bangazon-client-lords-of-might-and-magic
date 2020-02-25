@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom'
+import {  withRouter } from 'react-router-dom'
 import './NavBar.css'
 import {isAuthenticated, logout} from "../helpers/simpleAuth"
 
@@ -35,7 +35,7 @@ class NavBar extends Component {
         return (
             <nav className="pa3 pa4-ns avenir f6 f5-ns">
                 <div className="flex">
-                    <p className="f5 pointer dim b dib mh3 pt1" href="/" title="Home">Bangazon
+                    <p className="f5 pointer dim b dib mh3 pt1" onClick={() => this.props.history.push('/')} title="Home">Bangazon
                     </p>
                     <div>
                         <p className="dib ml5 mr1">
@@ -76,7 +76,7 @@ class NavBar extends Component {
                         My Account
                     </p>
                     {isAuthenticated() 
-                        ? <a className="pointer dim dib mr4" onClick={this.handleLogout}>Logout</a>
+                        ? <p className="pointer dim dib mr4" onClick={this.handleLogout}>Logout</p>
                         : <a className="pointer dim dib mr4" href="/login">Login</a>}
                 </div>
             </nav>
