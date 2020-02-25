@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ApiManager from '../utility/ApiManager'
 
+
 class SellProductForm extends Component {
 
     state = {
@@ -21,30 +22,32 @@ class SellProductForm extends Component {
     }
 
     handleSubmit = event => {
-        event.preventDefault()
-
-        const newProduct = {
-            name: this.state.name,
-            price: this.state.price,
-            description: this.state.description,
-            quantity: this.state.quantity,
-            location: this.state.location,
-            image_path: this.state.imagePath,
-            product_type_id: this.state.productTypeId
+        event.preventDefault()   
+        if (!event.target.checkValidity()){
+            return alert('please fill out form properly')
+        }else{
+            const newProduct = {
+                name: this.state.name,
+                price: this.state.price,
+                description: this.state.description,
+                quantity: this.state.quantity,
+                location: this.state.location,
+                image_path: this.state.imagePath,
+                product_type_id: this.state.productTypeId
+            }
+                        
+            ApiManager.post('products', newProduct)
+                .then(() => {
+                this.props.history.push('/')
+                })
         }
-
-        ApiManager.post('products', newProduct)
-        .then(() => {
-            this.props.history.push('/')
-        })
-
     }
 
     render() {
         return (
             <>
                 <h2 className="f6 gray fw2 ttu tracked product-header">List a Product for Sell</h2>
-                <form className="pa4 black-80">
+                <form className="pa4 black-80" onSubmit={this.handleSubmit} >
                     <div className="measure">
                         <label for="name" className="f6 b db mb2">Name</label>
                         <input id="name" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} required />
@@ -63,15 +66,15 @@ class SellProductForm extends Component {
                     </div>
                     <div className="measure">
                         <label for="location" className="f6 b db mb2">City</label>
-                        <input id="location" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} />
+                        <input id="location" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} required />
                     </div>
                     <div className="flex items-center mb2">
                         <label for="localDeliveryAvailable" className="lh-copy lda-label">Local Delivery Available</label>
-                        <input className="mr2" type="checkbox" id="localDeliveryAvailable" />
+                        <input className="mr2" type="checkbox" id="localDeliveryAvailable"  />
                     </div>
                     <div className="measure">
                         <label for="imagePath" className="f6 b db mb2">Image Path</label>
-                        <input id="imagePath" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} required />
+                        <input id="imagePath" className="input-reset ba b--black-20 pa2 mb2 db w-100" type="text" onChange={this.handleFieldChange} required/>
                     </div>
                     <div className="measure">
                         <label className="f6 b db mb2">Type</label>
@@ -82,7 +85,7 @@ class SellProductForm extends Component {
                             <option value={3}>Product type 3</option>
                         </datalist>
                     </div>
-                    <button onClick={this.handleSubmit}>Submit</button>
+                    <button>Submit</button>
                 </form>
             </>
         )
