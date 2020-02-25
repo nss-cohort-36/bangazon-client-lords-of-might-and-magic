@@ -50,7 +50,9 @@ class Order extends Component {
     //     .then(products => this.setState({orderProducts: products}))
     // }   
 
-    
+    cancelOrder = () => {
+        
+    }
 
     render() {
         return (
@@ -66,6 +68,7 @@ class Order extends Component {
                     }
                 </article>
                 <button>Cancel Order</button>
+                <button>Complete Order</button>
             </>
         )
     }
