@@ -18,19 +18,6 @@ class Order extends Component {
 
     
 
-    // getOrder = () => {
-    //     if (isAuthenticated())
-    //         fetch('http://localhost:5002/orderproduct?orderId=1&_expand=product', {
-    //             "method": "GET",
-    //             "headers": {
-    //                 "Accept": "application/json"
-    //               }
-    //         })
-    //         .then(response => response.json())
-    //         .then(items => this.setState({orderProducts: items}))
-        
-    // }
-
     getProducts = () => {
         if (isAuthenticated())
             fetch('http://localhost:8000/products', {
@@ -45,12 +32,9 @@ class Order extends Component {
         
     }
 
-    // getProducts = () => {
-    //     ApiManager.fetchProducts()
-    //     .then(products => this.setState({orderProducts: products}))
-    // }   
-
-    
+    cancelOrder = () => {
+        
+    }
 
     render() {
         return (
@@ -66,6 +50,7 @@ class Order extends Component {
                     }
                 </article>
                 <button>Cancel Order</button>
+                <button onClick = {() => this.props.changeDisplay("Complete Order")}>Complete Order</button>
             </>
         )
     }
