@@ -29,8 +29,7 @@ export default class Settings extends Component {
         "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
       }
     })
-
-    this.getPaymentTypes();
+    .then(() => this.getPaymentTypes());
   }
 
   componentDidMount() {
