@@ -1,11 +1,7 @@
 import React, { Component } from "react"
 import { isAuthenticated } from "../helpers/simpleAuth"
-import ApiManager from "../utility/ApiManager"
 
-
-class CompleteOrder extends Component {
-
-
+export default class CompleteOrder extends Component {
     state = {
         paymentTypes: [],
         paymentTypeId: '',
@@ -33,7 +29,6 @@ class CompleteOrder extends Component {
         }
     }
 
-
     handleFieldChange = evt => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
@@ -50,7 +45,7 @@ class CompleteOrder extends Component {
             <>
                 <article>
                     <h3>Please select payment type</h3>
-                    <select id="paymentId" onChange={this.handleFieldChange} value={this.state.paymentId} id="paymentTypeId">
+                    <select onChange={this.handleFieldChange} value={this.state.paymentId} id="paymentTypeId">
                         {this.state.paymentTypes.map(payment => (
                             <option key={`select-option-${payment.id}`} value={payment.id}>{payment.merchant_name}</option>
                         ))}
@@ -61,5 +56,3 @@ class CompleteOrder extends Component {
         )
     }
 }
-
-export default CompleteOrder

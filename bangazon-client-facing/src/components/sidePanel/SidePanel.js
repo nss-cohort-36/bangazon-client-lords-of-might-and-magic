@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Settings from '../settings/Settings'
 import Order from '../Order/order';
 import CompleteOrder from '../Order/CompleteOrder'

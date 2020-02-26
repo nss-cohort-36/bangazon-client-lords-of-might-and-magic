@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import OrderProduct from "./OrderProduct"
 import { isAuthenticated } from "../helpers/simpleAuth"
-import ApiManager from "../utility/ApiManager"
 
 class Order extends Component {
 
