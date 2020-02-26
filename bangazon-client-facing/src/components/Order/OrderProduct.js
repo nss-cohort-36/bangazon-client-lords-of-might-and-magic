@@ -11,7 +11,7 @@ class OrderProduct extends Component {
                         <span >
                             {this.props.item.name}
                         </span>
-                        <button >Delete Product</button>
+                        <DeleteIcon className='dib pointer red dim pr1' />
                     </p>
                 </section>
 
