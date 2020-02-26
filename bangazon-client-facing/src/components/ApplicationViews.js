@@ -8,8 +8,20 @@ import PaymentTypeForm from "./paymentType/PaymentTypeForm"
 import SellProductForm from "./product/SellProductForm"
 import { isAuthenticated } from "./helpers/simpleAuth"
 import ProductDetail from "./product/ProductDetail"
+import ApiManager from "./utility/ApiManager"
 
 class ApplicationViews extends Component {
+
+  addToOrder = (productId) => {
+    
+    ApiManager.get('orders')
+    .then((order) => {
+      console.log(order)
+    })
+  
+  }
+
+
 
   render() {
     return (
@@ -26,7 +38,7 @@ class ApplicationViews extends Component {
         />
         <Route
           exact path="/product/:productId(\d+)" render={props => {
-            return <ProductDetail {...props} />
+            return <ProductDetail {...props} addToOrder={this.addToOrder}/>
           }}
         />
         <Route

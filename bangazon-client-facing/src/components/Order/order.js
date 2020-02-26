@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import OrderProduct from "./OrderProduct"
 import { isAuthenticated } from "../helpers/simpleAuth"
+import ApiManager from "../utility/ApiManager"
 
 class Order extends Component {
 
@@ -10,29 +11,31 @@ class Order extends Component {
     }
 
     componentDidMount() {
-        this.getProducts()
+        // this.getShoppingCartInfo()
     }
 
     loggedInUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
 
-    
+    deleteProductFromCart = (idArray) => {
+        Promise.all(
+        idArray.forEach(id => {
+            ApiManager.delete("orderproducts", id)
+        }))
+        .then(this.getShoppingCartInfo)
+    }
 
-    getProducts = () => {
+    getShoppingCartInfo = () => {
         if (isAuthenticated())
-            fetch('http://localhost:8000/products', {
-                "method": "GET",
-                "headers": {
-                    "Accept": "application/json",
-                    "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
-                  }
-            })
-            .then(response => response.json())
-            .then(items => this.setState({orderProducts: items}))
+            ApiManager.get("orderproducts")
+            .then(items => {
+                console.log(items)
+                this.setState({orderProducts: items})})
         
     }
 
-    cancelOrder = () => {
-        
+    cancelOrder = (orderId) => {
+        ApiManager.delete(orderId)
+        .then(this.getShoppingCartInfo)
     }
 
     render() {
