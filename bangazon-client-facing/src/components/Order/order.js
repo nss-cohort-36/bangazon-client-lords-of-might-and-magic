@@ -39,7 +39,7 @@ class Order extends Component {
     render() {
         return (
             <>
-                <article>
+                <article className="pa3 pa5-ns">
                     {
                         this.state.orderProducts.map(item =>
                             <OrderProduct
