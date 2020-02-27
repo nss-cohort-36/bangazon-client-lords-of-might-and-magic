@@ -16,7 +16,21 @@ class ApplicationViews extends Component {
     
     ApiManager.get('orders')
     .then((order) => {
+      let newOrderProduct = {
+        order_id : '',
+        product_id : productId
+      }
       console.log(order)
+      if (order === {} ) {
+        ApiManager.post("orders", {})
+        .then((newOrder) => {
+          newOrderProduct.order_id = newOrder.id
+          return ApiManager.post("orderproducts", newOrderProduct)
+        })
+      } else {
+        newOrderProduct.order_id = order.id
+        return ApiManager.post("orderproducts", newOrderProduct)
+      }
     })
   
   }
@@ -28,12 +42,12 @@ class ApplicationViews extends Component {
       <React.Fragment>
         <Route
           exact path="/" render={props => {
-            return <ProductList {...props} />
+            return <ProductList {...props} addToOrder={this.addToOrder}/>
           }}
         />
         <Route
           exact path="/name/:searchTerm" render={props => {
-            return <ProductList {...props} isNameSearch={true}/>
+            return <ProductList {...props} isNameSearch={true} addToOrder={this.addToOrder}/>
           }}
         />
         <Route
@@ -43,7 +57,7 @@ class ApplicationViews extends Component {
         />
         <Route
           exact path="/city/:searchTerm" render={props => {
-            return <ProductList {...props} isCitySearch={true}/>
+            return <ProductList {...props} isCitySearch={true} addToOrder={this.addToOrder}/>
           }}
           />
           <Route
