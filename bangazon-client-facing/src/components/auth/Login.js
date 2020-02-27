@@ -3,7 +3,7 @@ import "./Login.css"
 import { login } from "../helpers/simpleAuth";
 
 
-class Login extends Component {
+export default class Login extends Component {
 
     state = {
       username: "",
@@ -33,37 +33,37 @@ class Login extends Component {
 
     render() {
       return (
-        <main style={{textAlign:"center"}}>
-          <form className="form--login" onSubmit={this.handleLogin}>
-            <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-            <fieldset>
-              <label htmlFor="inputUsername"> Username </label>
+        <main>
+          <form onSubmit={this.handleLogin}>
+            <h1 className="h3 mb3 f5 black fw2 ttu tracked">Please sign in</h1>
+            <div className="measure">
+              <label htmlFor="inputUsername" className="f6 b db mb2"> Username </label>
               <input onChange={this.handleInputChange}
                 type="username"
                 id="username"
-                className="form-control"
+                className="input-reset ba b--black-20 pa2 mb2 db w-50"
                 placeholder="Username"
                 required autoFocus />
-            </fieldset>
-            <fieldset>
-              <label htmlFor="inputPassword"> Password </label>
+            </div>
+            <div className="measure">
+              <label htmlFor="inputPassword" className="f6 b db mb2"> Password </label>
               <input onChange={this.handleInputChange}
                 type="password"
                 id="password"
-                className="form-control"
+                className="input-reset ba b--black-20 pa2 mb2 db w-50"
                 placeholder="Password"
                 required />
-            </fieldset>
-            <fieldset>
-              <button type="submit">
+            </div>
+            <div className="measure">
+              <button 
+                type="submit" 
+                className='b dib f6 link br-pill ba ph2 pv1 mv3 black bg-animate hover-bg-light-pink'>
                   Sign in
               </button>
-            </fieldset>
+            </div>
           </form>
           <a href="/register">Register New Account</a>
         </main>
     )
   }
 }
-
-export default Login

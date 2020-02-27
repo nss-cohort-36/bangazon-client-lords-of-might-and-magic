@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { register } from "../helpers/simpleAuth" 
 
-class Register extends Component {
+export default class Register extends Component {
 
   state = {
     email: "",
@@ -37,78 +37,78 @@ class Register extends Component {
 
   render() {
     return (
-      <main style={{ textAlign: "center" }}>
-        <form className="form--login" onSubmit={this.handleRegister}>
-          <h1 className="h3 mb-3 font-weight-normal">Register an Account with Bangazon</h1>
-          <fieldset>
-            <label htmlFor="userName"> Username </label>
-            <input onChange={(evt) => this.handleInputChange(evt)}
+      <main>
+        <form onSubmit={this.handleRegister}>
+          <h1 className="h3 mb3 f5 black fw2 ttu tracked">Register an Account with Bangazon</h1>
+          <div className="measure">
+            <label htmlFor="userName" className="f6 b db mb2"> Username </label>
+            <input onChange={evt => this.handleInputChange(evt)}
               id="userName"
               type="text"
               name="userName"
-              className="form-control"
+              className="input-reset ba b--black-20 pa2 mb2 db w-50"
               placeholder="Username"
               required autoFocus />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="firstName"> First Name </label>
+          </div>
+          <div className="measure">
+            <label htmlFor="firstName" className="f6 b db mb2"> First Name </label>
             <input onChange={this.handleInputChange}
               id="firstName"
               type="text"
               name="firstName"
-              className="form-control"
+              className="input-reset ba b--black-20 pa2 mb2 db w-50"
               placeholder="First name"
               required autoFocus />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="lastName"> Last Name </label>
+          </div>
+          <div className="measure">
+            <label htmlFor="lastName" className="f6 b db mb2"> Last Name </label>
             <input onChange={this.handleInputChange}
               id="lastName"
               type="text"
               name="lastName"
-              className="form-control"
+              className="input-reset ba b--black-20 pa2 mb2 db w-50"
               placeholder="Last name"
               required />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="inputEmail"> Email address </label>
+          </div>
+          <div className="measure">
+            <label htmlFor="inputEmail" className="f6 b db mb2"> Email address </label>
             <input onChange={this.handleInputChange}
               id="email"
               type="email"
               name="email"
-              className="form-control"
+              className="input-reset ba b--black-20 pa2 mb2 db w-50"
               placeholder="Email address"
               required />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="inputPassword"> Password </label>
+          </div>
+          <div className="measure">
+            <label htmlFor="inputPassword" className="f6 b db mb2"> Password </label>
             <input onChange={this.handleInputChange}
               id="password"
               type="password"
               name="password"
-              className="form-control"
+              className="input-reset ba b--black-20 pa2 mb2 db w-50"
               placeholder="Password"
               required />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="verifyPassword"> Verify Password </label>
+          </div>
+          <div className="measure">
+            <label htmlFor="verifyPassword" className="f6 b db mb2"> Verify Password </label>
             <input onChange={this.handleInputChange}
               id="verifyPassword"
               type="password"
               name="verifyPassword"
-              className="form-control"
+              className="input-reset ba b--black-20 pa2 mb2 db w-50"
               placeholder="Verify password"
               required />
-          </fieldset>
-          <fieldset>
-            <button type="submit">
+          </div>
+          <div className="measure">
+            <button 
+              type="submit" 
+              className='b dib f6 link br-pill ba ph2 pv1 mv3 black bg-animate hover-bg-light-pink'>
               Register
             </button>
-          </fieldset>
+          </div>
         </form>
       </main>
     )
   }
 }
-
-export default Register
