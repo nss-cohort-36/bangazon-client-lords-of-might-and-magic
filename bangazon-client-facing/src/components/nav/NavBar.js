@@ -63,7 +63,7 @@ class NavBar extends Component {
                 </div>
                 <div className='pt1'>
                     {isAuthenticated() 
-                        ? <p className="pointer dim dib mr4" onClick={this.pushSellProductForm} title="Sell Product">Sell Product</p>
+                        ? <p className="pointer dim dib mr4" onClick={this.pushSellProductForm}>Sell Product</p>
                         : null}
                     <p 
                         className="pointer dim dib mr4" 

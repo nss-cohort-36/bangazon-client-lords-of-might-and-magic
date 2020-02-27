@@ -33,7 +33,7 @@ const ApiManager = {
   },
   delete: function (endpoint, id) {
     return fetch(`http://localhost:8000/${endpoint}/${id}`, {
-      method: "POST",
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",

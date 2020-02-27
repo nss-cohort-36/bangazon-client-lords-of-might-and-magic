@@ -13,8 +13,8 @@ export default props => {
     }
 
     return (
-        <section className="pt2 pb6 ph3 ph4-ns">
-            <h2 className="f4">{props.displayTitle}</h2>
+        <section className="pt4 pb6 ph3 ph4-ns">
+            <h2 className="f4 fw6 ttu">{props.displayTitle}</h2>
             {currDisplay()}
         </section>
     )
