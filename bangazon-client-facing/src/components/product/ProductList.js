@@ -28,7 +28,7 @@ class ProductList extends Component {
             <>
                 <article className="explorerList">
                     <h3 className='f4 fw6 ttu pl5 pt3'>Available Products</h3>
-                    <div className='flex pt2'>
+                    <div className='flex flex-wrap pt2'>
                     {
                         this.props.isCitySearch ?
                         this.state.products.filter(product => product.location.includes(this.props.match.params.searchTerm)).map(product =>
