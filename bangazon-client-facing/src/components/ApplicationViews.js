@@ -4,6 +4,7 @@ import Register from "./auth/Register"
 import Login from "./auth/Login"
 import ProductList from "./product/ProductList"
 import Order from "./Order/order"
+import CompleteOrder from "./Order/CompleteOrder"
 import PaymentTypeForm from "./paymentType/PaymentTypeForm"
 import SellProductForm from "./product/SellProductForm"
 import { isAuthenticated } from "./helpers/simpleAuth"
@@ -49,6 +50,11 @@ class ApplicationViews extends Component {
             return <Register {...props} />
           }}
         />
+        <Route 
+        path="/completeorder" render={props => {
+          return <CompleteOrder {...props} />
+        }}
+      />
         <Route
           path="/login" render={props => {
             return <Login {...props} />

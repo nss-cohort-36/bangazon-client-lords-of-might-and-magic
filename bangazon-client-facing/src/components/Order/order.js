@@ -38,7 +38,7 @@ class Order extends Component {
     render() {
         return (
             <>
-                <article className="pa3 pa5-ns">
+                <article className="pa1 pa1-ns">
                     {
                         this.state.orderProducts.map(item =>
                             <OrderProduct
@@ -48,8 +48,10 @@ class Order extends Component {
                             />)
                     }
                 </article>
+                <div className="tc">
                 <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-blue i'>Cancel Order</button>
                 <button onClick = {() => this.props.changeDisplay("Complete Order")} className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-blue i'>Complete Order</button>
+                </div>
             </>
         )
     }
