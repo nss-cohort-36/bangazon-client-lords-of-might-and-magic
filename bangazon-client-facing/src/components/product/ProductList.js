@@ -32,8 +32,8 @@ class ProductList extends Component {
                     isAuthenticated() ? "Available Products"
                     : "Login to see available products!"}</h3>
                     {
-                        this.state.products === [] ? null
-                        :   this.props.isCitySearch ?
+                        
+                           this.props.isCitySearch ?
                             this.state.products.filter(product => product.location.includes(this.props.match.params.searchTerm)).map(product =>
                                 <ProductCard
                                     key={product.id}
