@@ -21,7 +21,7 @@ class ApplicationViews extends Component {
         product_id : productId
       }
       console.log(order)
-      if (order === {} ) {
+      if (order.length === 0 ) {
         ApiManager.post("orders", {})
         .then((newOrder) => {
           newOrderProduct.order_id = newOrder.id
@@ -34,12 +34,6 @@ class ApplicationViews extends Component {
     })
   
   }
-
-  
-
-
-
-
 
   render() {
     return (
