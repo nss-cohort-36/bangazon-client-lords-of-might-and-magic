@@ -45,7 +45,7 @@ class ProductDetail extends Component {
                       </div>
                     </div>
                     <p className="f6 lh-copy measure mt2 mid-gray">{description}</p>
-                    <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow'>
+                    <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow' onClick={this.handleCartAdd}>
                       Add to Cart
                     </button>
                   </div>
