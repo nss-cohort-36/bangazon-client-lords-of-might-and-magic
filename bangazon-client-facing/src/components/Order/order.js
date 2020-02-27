@@ -11,7 +11,7 @@ class Order extends Component {
     }
 
     componentDidMount() {
-        // this.getShoppingCartInfo()
+        this.getShoppingCartInfo()
     }
 
     loggedInUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
