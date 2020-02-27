@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 export default props => {
   const { image_path, name, id, price, description } = props.product;
@@ -29,4 +29,4 @@ export default props => {
       </article>
     </>
   )
-}
+};
