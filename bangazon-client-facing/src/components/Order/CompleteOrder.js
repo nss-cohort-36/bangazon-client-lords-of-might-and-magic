@@ -8,7 +8,7 @@ class CompleteOrder extends Component {
         paymentTypes: [],
         paymentTypeId: '',
         customerId: '',
-        completedOrder: '',
+        completedOrder: [],
     }
 
     loggedInUserId= () => JSON.parse(localStorage.getItem("credentials")).userId
