@@ -21,11 +21,14 @@ class ProductList extends Component {
         })
     }
 
+
+
     render() {
         return (
             <>
                 <article className="explorerList">
-                    <h3>Available Products</h3>
+                    <h3 className='f4 fw6 ttu pl5 pt3'>Available Products</h3>
+                    <div className='flex pt2'>
                     {
                         this.props.isCitySearch ?
                         this.state.products.filter(product => product.location.includes(this.props.match.params.searchTerm)).map(product =>
@@ -45,6 +48,7 @@ class ProductList extends Component {
                                 product={product}
                             />)
                     }
+                    </div>
                 </article>
                   
                 
