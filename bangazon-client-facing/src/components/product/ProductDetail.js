@@ -18,6 +18,11 @@ class ProductDetail extends Component {
         })
     }
 
+    handleCartAdd = () => {
+        this.props.addToOrder(this.state.product.id)
+        
+    }
+
     render() {
         return (
             <>
@@ -25,7 +30,7 @@ class ProductDetail extends Component {
                     <h2>{this.state.product.name}</h2>
                     <h3>Price: ${this.state.product.price}</h3>
                     <h3>Description: {this.state.product.description}</h3>
-                    < button>Add to Cart</button>
+                    < button onClick={this.handleCartAdd}>Add to Cart</button>
                 </article>
                   
                 

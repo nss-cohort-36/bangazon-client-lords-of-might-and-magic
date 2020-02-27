@@ -10,7 +10,7 @@ class ProductCard extends Component {
             {this.props.product.name}
           </a>
           <p>Cost: ${this.props.product.price}</p>
-          <button>Add to Cart</button>
+          <button onClick={() => this.props.addToOrder(this.props.product.id)}>Add to Cart</button>
         </section>
       </>
     )

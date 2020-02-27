@@ -8,30 +8,56 @@ import PaymentTypeForm from "./paymentType/PaymentTypeForm"
 import SellProductForm from "./product/SellProductForm"
 import { isAuthenticated } from "./helpers/simpleAuth"
 import ProductDetail from "./product/ProductDetail"
+import ApiManager from "./utility/ApiManager"
 
 class ApplicationViews extends Component {
+
+  addToOrder = (productId) => {
+    
+    ApiManager.get('orders')
+    .then((order) => {
+      let newOrderProduct = {
+        order_id : '',
+        product_id : productId
+      }
+      console.log(order)
+      if (order === {} ) {
+        ApiManager.post("orders", {})
+        .then((newOrder) => {
+          newOrderProduct.order_id = newOrder.id
+          return ApiManager.post("orderproducts", newOrderProduct)
+        })
+      } else {
+        newOrderProduct.order_id = order.id
+        return ApiManager.post("orderproducts", newOrderProduct)
+      }
+    })
+  
+  }
+
+
 
   render() {
     return (
       <React.Fragment>
         <Route
           exact path="/" render={props => {
-            return <ProductList {...props} />
+            return <ProductList {...props} addToOrder={this.addToOrder}/>
           }}
         />
         <Route
           exact path="/name/:searchTerm" render={props => {
-            return <ProductList {...props} isNameSearch={true}/>
+            return <ProductList {...props} isNameSearch={true} addToOrder={this.addToOrder}/>
           }}
         />
         <Route
           exact path="/product/:productId(\d+)" render={props => {
-            return <ProductDetail {...props} />
+            return <ProductDetail {...props} addToOrder={this.addToOrder}/>
           }}
         />
         <Route
           exact path="/city/:searchTerm" render={props => {
-            return <ProductList {...props} isCitySearch={true}/>
+            return <ProductList {...props} isCitySearch={true} addToOrder={this.addToOrder}/>
           }}
           />
           <Route
