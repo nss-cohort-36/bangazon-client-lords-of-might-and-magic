@@ -8,7 +8,7 @@ export default props => {
 
     const currDisplay = () => {
         if (props.displayTitle === "Settings") return <Settings />
-        if (props.displayTitle === "Complete Order") return <CompleteOrder />
+        if (props.displayTitle === "Complete Order") return <CompleteOrder changeDisplay={props.changeDisplay}/>
         else return <Order changeDisplay={props.changeDisplay}/>
     }
 
