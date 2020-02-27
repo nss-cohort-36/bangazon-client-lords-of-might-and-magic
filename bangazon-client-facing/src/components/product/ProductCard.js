@@ -1,7 +1,7 @@
 import React from "react";
 
 export default props => {
-  const { image_path, name, id, price, description } = props.product;
+  const { image_path, name, id, price, description, } = props.product;
 
   return (
     <article className="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l ma3">
@@ -21,7 +21,7 @@ export default props => {
           </div>
         </div>
         <p className="f6 lh-copy measure mt2 mid-gray">{description}</p>
-        <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow'>
+        <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow' onClick={() => props.addToOrder(id)}>
           Add to Cart
         </button>
       </div>

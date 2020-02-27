@@ -7,7 +7,8 @@ class Order extends Component {
 
 
     state = {
-        orderProducts: []
+        orderProducts: [],
+        emptyCart:true
     }
 
     componentDidMount() {
@@ -29,6 +30,9 @@ class Order extends Component {
             ApiManager.get("orderproducts")
             .then(items => {
                 console.log(items)
+                if (items.length > 0) {
+                    this.setState({emptyCart: false })
+                }
                 this.setState({orderProducts: items})})
         
     }
@@ -42,17 +46,20 @@ class Order extends Component {
         return (
             <>
                 <article>
-                    {
-                        this.state.orderProducts.map(item =>
+                    
+                        <div>{ this.state.orderProducts.length === 0 ? "Your cart is empty, add something to see it here!" : null }</div>
+                        {
+                            this.state.orderProducts.map(item =>
                             <OrderProduct
                                 key={item.id}
                                 item={item}
                                 {...this.props}
                             />)
+                        
                     }
                 </article>
-                <button>Cancel Order</button>
-                <button onClick = {() => this.props.changeDisplay("Complete Order")}>Complete Order</button>
+                <button hidden={this.state.emptyCart} >Cancel Order</button>
+                <button hidden={this.state.emptyCart} onClick = {() => this.props.changeDisplay("Complete Order")}>Complete Order</button>
             </>
         )
     }
