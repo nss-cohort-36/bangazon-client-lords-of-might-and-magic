@@ -1,5 +1,5 @@
 import React from 'react';
-import Settings from '../settings/Settings'
+import MyAccount from '../myAccount/MyAccount'
 import Order from '../Order/order';
 import CompleteOrder from '../Order/CompleteOrder'
 
@@ -7,7 +7,7 @@ import CompleteOrder from '../Order/CompleteOrder'
 export default props => {
 
     const currDisplay = () => {
-        if (props.displayTitle === "Settings") return <Settings />
+        if (props.displayTitle === "My Account") return <MyAccount />
         if (props.displayTitle === "Complete Order") return <CompleteOrder changeDisplay={props.changeDisplay}/>
         else return <Order changeDisplay={props.changeDisplay}/>
     }

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { ReactComponent as DeleteIcon } from '../../assets/deleteIcon.svg';
 import { isAuthenticated } from "../helpers/simpleAuth"
-import './Settings.css'
+import './MyAccount.css'
 
-export default class Settings extends Component {
+export default class MyAccount extends Component {
   state = {
     paymentTypes: []
+    
   }
 
   getPaymentTypes = () => {
