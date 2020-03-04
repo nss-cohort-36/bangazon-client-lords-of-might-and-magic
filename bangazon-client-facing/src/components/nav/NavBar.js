@@ -2,10 +2,21 @@ import React, { Component } from 'react';
 import {  withRouter } from 'react-router-dom'
 import './NavBar.css'
 import {isAuthenticated, logout} from "../helpers/simpleAuth"
+import ApiManager from '../utility/ApiManager'
 
 class NavBar extends Component {
     state ={
-        searchItem: ""
+        searchItem: "",
+        productTypes: []
+    }
+
+    componentDidMount() {
+        ApiManager.get('producttypes')
+        .then(productTypeList => {
+            this.setState({
+                productTypes: productTypeList
+            })
+        })
     }
 
     handleInputChange = (evt) => {
@@ -60,9 +71,14 @@ class NavBar extends Component {
                             Search by City
                         </button>
                         <select>
-                            <option>product type 1</option>
-                            <option>product type 2</option>
-                            <option>product type 3</option>
+                            {this.state.productTypes.forEach(productType => {
+                                if(this.state.productTypes === []) {
+                                    return <></>
+                                }
+                                else {
+                                    return <option value={productType.name}>{productType.name}</option>
+                                }
+                            })}
                         </select>
                     </div>
                 </div>
