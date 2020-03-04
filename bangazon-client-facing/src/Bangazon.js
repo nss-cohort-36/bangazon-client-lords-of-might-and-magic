@@ -42,6 +42,8 @@ class Bangazon extends Component {
         .then(items => {
             if (items.length > 0) {
                 this.setState({emptyCart: false })
+            } else {
+              this.setState({emptyCart: true })
             }
             this.setState({orderProducts: items})})
             .then(() => {
@@ -69,7 +71,15 @@ cancelOrder = (orderId) => {
             <ApplicationViews addToOrder={this.addToOrder} />
           </article>
           <article className="w-30 bg-light-gray">
-            <SidePanel changeDisplay={this.changeDisplay} displayTitle={this.state.sideDisplay} orderProducts={this.state.orderProducts} emptyCart={this.state.emptyCart} cancelOrder={this.cancelOrder} orderId={this.state.orderId}/>
+            <SidePanel 
+            changeDisplay={this.changeDisplay} 
+            displayTitle={this.state.sideDisplay} 
+            orderProducts={this.state.orderProducts} 
+            emptyCart={this.state.emptyCart} 
+            cancelOrder={this.cancelOrder} 
+            orderId={this.state.orderId} 
+            getShoppingCartInfo={this.getShoppingCartInfo}
+            />
           </article>
         </section>
       </>
