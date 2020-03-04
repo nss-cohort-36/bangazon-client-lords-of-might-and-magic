@@ -47,7 +47,6 @@ class CompleteOrder extends Component {
                 .then(response => response.json())
                 // .then(response => console.log(response))
                 .then(response => { 
-                    console.log(response)
                     this.setState({ completedOrder: response
                  })
                 
@@ -72,7 +71,7 @@ class CompleteOrder extends Component {
                 },
                 "body": JSON.stringify(this.state.completedOrder)
             })
-                .then(this.props.changeDisplay("Shopping Cart"))
+                .then(this.props.changeDisplay("Order Confirmation"))
         }
     }
 
