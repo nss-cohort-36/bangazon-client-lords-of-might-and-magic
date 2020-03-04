@@ -17,20 +17,12 @@ class ApplicationViews extends Component {
     ApiManager.get('orders')
     .then((order) => {
       let newOrderProduct = {
-        order_id : '',
+        order_id : order.id,
         product_id : productId
       }
-      if (order.length === 0 ) {
-        ApiManager.post("orders", {})
-        .then((newOrder) => {
-          newOrderProduct.order_id = newOrder.id
-          return ApiManager.post("orderproducts", newOrderProduct)
-        })
-      } else {
-        newOrderProduct.order_id = order.id
-        return ApiManager.post("orderproducts", newOrderProduct)
+      return ApiManager.post("orderproducts", newOrderProduct)
       }
-    })
+    )
   
   }
 
