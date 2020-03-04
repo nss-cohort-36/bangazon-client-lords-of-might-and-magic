@@ -13,14 +13,13 @@ import ApiManager from "./utility/ApiManager"
 class ApplicationViews extends Component {
 
   addToOrder = (productId) => {
-    
+    // refactor this so that new order gets made in django list method when you dont have an open order yet
     ApiManager.get('orders')
     .then((order) => {
       let newOrderProduct = {
         order_id : '',
         product_id : productId
       }
-      console.log(order)
       if (order.length === 0 ) {
         ApiManager.post("orders", {})
         .then((newOrder) => {

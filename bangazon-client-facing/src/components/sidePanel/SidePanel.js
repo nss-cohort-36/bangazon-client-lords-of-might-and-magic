@@ -2,13 +2,14 @@ import React from 'react';
 import MyAccount from '../myAccount/MyAccount'
 import Order from '../Order/order';
 import CompleteOrder from '../Order/CompleteOrder'
-
+import Confirmation from '../Order/Confirmation'
 
 export default props => {
 
     const currDisplay = () => {
         if (props.displayTitle === "My Account") return <MyAccount />
         if (props.displayTitle === "Complete Order") return <CompleteOrder changeDisplay={props.changeDisplay}/>
+        if (props.displayTitle === "Order Confirmation") return <Confirmation changeDisplay={props.changeDisplay}/>
         else return <Order changeDisplay={props.changeDisplay}/>
     }
 
