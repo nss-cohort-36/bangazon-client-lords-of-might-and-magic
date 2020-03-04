@@ -16,14 +16,21 @@ class PaymentTypeForm extends Component {
     }
 
     savePaymentForm = () => {
-        const newPaymentType = {
-            "merchant_name": this.state.merchantName,
-            "acct_number": this.state.accountNumber,
-            "expiration_date": this.state.expDate
+        const currentDate = new Date().toISOString().slice(0,10);
+        console.log(currentDate, this.state.expDate < currentDate)
+        if (this.state.expDate < currentDate) {
+            window.alert("Expiration Date cannot have already passed. \nPlease enter a valid Expiration Date")
+        } else {
+            const newPaymentType = {
+                "merchant_name": this.state.merchantName,
+                "acct_number": this.state.accountNumber,
+                "expiration_date": this.state.expDate
+            }
+
+            console.log(newPaymentType.expiration_date)
+            ApiManager.post("paymenttypes", newPaymentType)
+            .then(() => this.props.history.push('/'))
         }
-        console.log(newPaymentType.expiration_date)
-        ApiManager.post("paymenttypes", newPaymentType)
-        .then(() => this.props.history.push('/'))
     }
 
     render() {
