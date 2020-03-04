@@ -7,7 +7,7 @@ import Confirmation from '../Order/Confirmation'
 export default props => {
 
     const currDisplay = () => {
-        if (props.displayTitle === "My Account") return <MyAccount />
+        if (props.displayTitle === "My Account") return <MyAccount changeDisplay={props.changeDisplay} {...props}/>
         if (props.displayTitle === "Complete Order") return <CompleteOrder changeDisplay={props.changeDisplay}/>
         if (props.displayTitle === "Order Confirmation") return <Confirmation changeDisplay={props.changeDisplay}/>
         else return <Order changeDisplay={props.changeDisplay}/>

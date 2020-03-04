@@ -2,12 +2,21 @@ import React, { Component } from 'react';
 import { ReactComponent as DeleteIcon } from '../../assets/deleteIcon.svg';
 import { isAuthenticated } from "../helpers/simpleAuth"
 import './MyAccount.css'
+// import Customer from '../customer/Customer'
 
 export default class MyAccount extends Component {
   state = {
     paymentTypes: []
-    
+    customer: {}
+
   }
+
+  // getCustomer = () => {
+  //   if (isAuthenticated()) {
+  //     fetch(`http://localhost:8000/customers/${id}`)
+  //   }
+
+  // }
 
   getPaymentTypes = () => {
     if (isAuthenticated())
@@ -39,6 +48,18 @@ export default class MyAccount extends Component {
 
   render() {
   	return (
+      <>
+      {/* <article className="customerList">
+        {
+          this.props.customers.map(customer =>
+            <Customer
+              key={customer.id}                
+              customer={customer}
+            />
+
+          )
+        }
+      </article> */}
   		<article>
         <details className="w-70-ns w-100 pt2">
           <summary className="pointer dim">
@@ -61,6 +82,7 @@ export default class MyAccount extends Component {
           </div>
         </details>
   	  </article>
+      </>
   	)
   }
 }
