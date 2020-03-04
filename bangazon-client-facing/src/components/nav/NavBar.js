@@ -37,8 +37,7 @@ class NavBar extends Component {
                 <div className="flex">
                     <p className="f5 pointer dim b dib mh3 pt1" onClick={() => this.props.history.push('/')} title="Home">Bangazon
                     </p>
-                    <div>
-                        <p className="dib ml5 mr1">
+                    <div className="dib ml5 mr1 search-container">
                             <label className="mr1 ">Search:</label>
                             <input 
                                 className="search-input input-reset ba b--black-20 mr1"
@@ -46,7 +45,8 @@ class NavBar extends Component {
                                 id="searchItem" 
                                 type="text">
                             </input>
-                        </p>
+                        </div>
+                    <div className="search-options">
                         <button 
                             className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-blue i' 
                             id="nameSearch" 
@@ -59,6 +59,11 @@ class NavBar extends Component {
                             onClick={this.handleCitySearch}>
                             Search by City
                         </button>
+                        <select>
+                            <option>product type 1</option>
+                            <option>product type 2</option>
+                            <option>product type 3</option>
+                        </select>
                     </div>
                 </div>
                 <div className='pt1'>
