@@ -40,7 +40,6 @@ const ApiManager = {
         "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
       }
     })
-      .then(response => response.json())
   }
 }
 
