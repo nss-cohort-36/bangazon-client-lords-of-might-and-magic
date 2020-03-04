@@ -12,49 +12,29 @@ import ApiManager from "./utility/ApiManager"
 
 class ApplicationViews extends Component {
 
-  addToOrder = (productId) => {
-    // refactor this so that new order gets made in django list method when you dont have an open order yet
-    ApiManager.get('orders')
-    .then((order) => {
-      let newOrderProduct = {
-        order_id : '',
-        product_id : productId
-      }
-      if (order.length === 0 ) {
-        ApiManager.post("orders", {})
-        .then((newOrder) => {
-          newOrderProduct.order_id = newOrder.id
-          return ApiManager.post("orderproducts", newOrderProduct)
-        })
-      } else {
-        newOrderProduct.order_id = order.id
-        return ApiManager.post("orderproducts", newOrderProduct)
-      }
-    })
-  
-  }
+
 
   render() {
     return (
       <React.Fragment>
         <Route
           exact path="/" render={props => {
-            return <ProductList {...props} addToOrder={this.addToOrder}/>
+            return <ProductList {...props} addToOrder={this.props.addToOrder}/>
           }}
         />
         <Route
           exact path="/name/:searchTerm" render={props => {
-            return <ProductList {...props} isNameSearch={true} addToOrder={this.addToOrder}/>
+            return <ProductList {...props} isNameSearch={true} addToOrder={this.props.addToOrder}/>
           }}
         />
         <Route
           exact path="/product/:productId(\d+)" render={props => {
-            return <ProductDetail {...props} addToOrder={this.addToOrder}/>
+            return <ProductDetail {...props} addToOrder={this.props.addToOrder}/>
           }}
         />
         <Route
           exact path="/city/:searchTerm" render={props => {
-            return <ProductList {...props} isCitySearch={true} addToOrder={this.addToOrder}/>
+            return <ProductList {...props} isCitySearch={true} addToOrder={this.props.addToOrder}/>
           }}
           />
           <Route

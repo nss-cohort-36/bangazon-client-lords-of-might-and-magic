@@ -7,15 +7,12 @@ class Order extends Component {
 
 
     state = {
-        orderProducts: [],
-        emptyCart:true,
-        orderId: ""
-    }
-
-    componentDidMount() {
-        this.getShoppingCartInfo()
+        orderProducts: this.props.orderProducts,
+        
         
     }
+
+    
 
     loggedInUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
 
@@ -43,22 +40,16 @@ class Order extends Component {
         
     }
 
-    cancelOrder = (orderId) => {
-        ApiManager.delete("orders", orderId)
-        .then(() => {
-            this.setState({emptyCart: true})
-            this.getShoppingCartInfo()
-        })
-    }
+    
 
     render() {
         return (
             <>
                 <article>
                     
-                        <div>{ this.state.orderProducts.length === 0 ? "Your cart is empty, add something to see it here!" : null }</div>
+                        <div>{ this.props.orderProducts.length === 0 ? "Your cart is empty, add something to see it here!" : null }</div>
                         {
-                            this.state.orderProducts.map(item =>
+                            this.props.orderProducts.map(item =>
                             <OrderProduct
                                 key={item.id}
                                 item={item}
@@ -67,9 +58,9 @@ class Order extends Component {
                         
                     }
                 </article>
-                <button hidden={this.state.emptyCart} onClick={() => this.cancelOrder
-                (this.state.orderId)} >Cancel Order</button>
-                <button hidden={this.state.emptyCart} onClick = {() => this.props.changeDisplay("Complete Order")}>Complete Order</button>
+                <button hidden={this.props.emptyCart} onClick={() => this.props.cancelOrder
+                (this.props.orderId)} >Cancel Order</button>
+                <button hidden={this.props.emptyCart} onClick = {() => this.props.changeDisplay("Complete Order")}>Complete Order</button>
             </>
         )
     }
