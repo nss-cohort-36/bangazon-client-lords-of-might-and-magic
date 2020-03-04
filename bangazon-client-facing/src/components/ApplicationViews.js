@@ -20,7 +20,6 @@ class ApplicationViews extends Component {
         order_id : '',
         product_id : productId
       }
-      console.log(order)
       if (order.length === 0 ) {
         ApiManager.post("orders", {})
         .then((newOrder) => {
