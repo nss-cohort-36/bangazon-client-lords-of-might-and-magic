@@ -31,6 +31,7 @@ class Order extends Component {
         if (isAuthenticated())
             ApiManager.get("orderproducts")
             .then(items => {
+                console.log(items, items.length)
                 if (items.length > 0) {
                     this.setState({emptyCart: false })
                 }
@@ -44,7 +45,10 @@ class Order extends Component {
 
     cancelOrder = (orderId) => {
         ApiManager.delete("orders", orderId)
-        .then(this.getShoppingCartInfo)
+        .then(() => {
+            this.setState({emptyCart: true})
+            this.getShoppingCartInfo()
+        })
     }
 
     render() {
