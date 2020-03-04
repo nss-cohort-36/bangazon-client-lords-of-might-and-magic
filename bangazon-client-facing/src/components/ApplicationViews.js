@@ -36,17 +36,17 @@ class ApplicationViews extends Component {
       <React.Fragment>
         <Route
           exact path="/" render={props => {
-            return <ProductList {...props} addToOrder={this.addToOrder} />
+            return <ProductList {...props} addToOrder={this.props.addToOrder}/>
           }}
         />
         <Route
           exact path="/name/:searchTerm" render={props => {
-            return <ProductList {...props} isNameSearch={true} addToOrder={this.addToOrder} />
+            return <ProductList {...props} isNameSearch={true} addToOrder={this.props.addToOrder}/>
           }}
         />
         <Route
           exact path="/product/:productId(\d+)" render={props => {
-            return <ProductDetail {...props} addToOrder={this.addToOrder} />
+            return <ProductDetail {...props} addToOrder={this.props.addToOrder}/>
           }}
         />
         <Route
@@ -56,7 +56,7 @@ class ApplicationViews extends Component {
         />
         <Route
           exact path="/producttype/:searchTerm" render={props => {
-            return <ProductList {...props} isProductTypeFilter={true} addToOrder={this.addToOrder} />
+            return <ProductList {...props} isCitySearch={true} addToOrder={this.props.addToOrder}/>
           }}
         />
         <Route

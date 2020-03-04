@@ -8,7 +8,7 @@ class CompleteOrder extends Component {
         paymentTypes: [],
         paymentTypeId: '',
         customerId: '',
-        completedOrder: [],
+        completedOrder: []
     }
 
     loggedInUserId= () => JSON.parse(localStorage.getItem("credentials")).userId
@@ -28,7 +28,8 @@ class CompleteOrder extends Component {
                 }
             })
                 .then(response => response.json())
-                .then(response => this.setState({ paymentTypes: response }))
+                .then(response => this.setState({ paymentTypes: response,
+                paymentTypeId: response[0].id }))
            
 
 
@@ -71,7 +72,10 @@ class CompleteOrder extends Component {
                 },
                 "body": JSON.stringify(this.state.completedOrder)
             })
-                .then(this.props.changeDisplay("Order Confirmation"))
+                .then(() => {
+                    this.props.changeDisplay("Order Confirmation")
+                    this.props.getShoppingCartInfo()
+                })
         }
     }
 
@@ -94,7 +98,7 @@ class CompleteOrder extends Component {
                 <>
                     <article>
                         <h3>Please select payment type</h3>
-                        <select onChange={this.handleFieldChange} value={this.state.paymentId} id="paymentTypeId">
+                        <select onChange={this.handleFieldChange} value={this.state.paymentTypeId} id="paymentTypeId" >
                             {this.state.paymentTypes.map(payment => (
                                 <option key={`select-option-${payment.id}`} value={payment.id}>{payment.merchant_name}</option>
                             ))}
