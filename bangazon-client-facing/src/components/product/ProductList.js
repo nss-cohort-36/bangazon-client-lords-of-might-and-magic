@@ -51,12 +51,19 @@ class ProductList extends Component {
                                             addToOrder={this.props.addToOrder}
                                         />)
                                     : this.props.isProductTypeFilter ?
-                                        this.state.products.filter(product => product.product_type_id === Number(this.props.match.params.searchTerm)).map(product =>
-                                            <ProductCard
-                                                key={product.id}
-                                                product={product}
-                                                addToOrder={this.props.addToOrder}
-                                            />)
+                                        (this.props.match.params.searchTerm !== "all") ?
+                                            this.state.products.filter(product => product.product_type_id === Number(this.props.match.params.searchTerm)).map(product =>
+                                                <ProductCard
+                                                    key={product.id}
+                                                    product={product}
+                                                    addToOrder={this.props.addToOrder}
+                                                />)
+                                                : this.state.products.map(product =>
+                                                    <ProductCard
+                                                        key={product.id}
+                                                        product={product}
+                                                        addToOrder={this.props.addToOrder}
+                                                    />)
                                         : this.state.products.map(product =>
                                             <ProductCard
                                                 key={product.id}

@@ -25,8 +25,9 @@ class ApplicationViews extends Component {
         .then((newOrder) => {
           newOrderProduct.order_id = newOrder.id
           return ApiManager.post("orderproducts", newOrderProduct)
-        }
-      })
+        })
+      }
+    })
 
   }
 

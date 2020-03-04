@@ -34,11 +34,14 @@ class NavBar extends Component {
         this.props.history.push(`/name/${this.state.searchItem}`)
     }
 
+    productTypeURL = () => {
+        this.props.history.push(`/producttype/${this.state.productTypeId}`)
+    }
+
     handleProductTypeSelect = evt => {
         let stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
-        this.setState(stateToChange)
-        this.props.history.push(`/producttype/${this.state.productTypeId}`)
+        this.setState(stateToChange, this.productTypeURL)
     }
 
     handleLogout = () => {
@@ -79,7 +82,7 @@ class NavBar extends Component {
                             Search by City
                         </button>
                         <select id="productTypeId" onChange={this.handleProductTypeSelect}>
-                            <option>select product type</option>
+                            <option value="all">select product type</option>
                             {this.state.productTypes.map(productType => {
                                 return <option key={productType.id} value={productType.id}>{productType.name}</option>
                             })}
