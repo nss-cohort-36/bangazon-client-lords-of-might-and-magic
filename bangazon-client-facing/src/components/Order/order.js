@@ -8,11 +8,13 @@ class Order extends Component {
 
     state = {
         orderProducts: [],
-        emptyCart:true
+        emptyCart:true,
+        orderId: ""
     }
 
     componentDidMount() {
         this.getShoppingCartInfo()
+        
     }
 
     loggedInUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
@@ -29,17 +31,24 @@ class Order extends Component {
         if (isAuthenticated())
             ApiManager.get("orderproducts")
             .then(items => {
-                console.log(items)
+                console.log(items, items.length)
                 if (items.length > 0) {
                     this.setState({emptyCart: false })
                 }
                 this.setState({orderProducts: items})})
+                .then(() => {
+                    ApiManager.get('orders')
+                    .then((order) => this.setState({orderId: order.id}))
+                })
         
     }
 
     cancelOrder = (orderId) => {
-        ApiManager.delete(orderId)
-        .then(this.getShoppingCartInfo)
+        ApiManager.delete("orders", orderId)
+        .then(() => {
+            this.setState({emptyCart: true})
+            this.getShoppingCartInfo()
+        })
     }
 
     render() {
@@ -58,7 +67,8 @@ class Order extends Component {
                         
                     }
                 </article>
-                <button hidden={this.state.emptyCart} >Cancel Order</button>
+                <button hidden={this.state.emptyCart} onClick={() => this.cancelOrder
+                (this.state.orderId)} >Cancel Order</button>
                 <button hidden={this.state.emptyCart} onClick = {() => this.props.changeDisplay("Complete Order")}>Complete Order</button>
             </>
         )
