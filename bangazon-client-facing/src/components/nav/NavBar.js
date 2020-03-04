@@ -71,6 +71,11 @@ class NavBar extends Component {
                         Shopping Cart
                     </p>
                     <p 
+                        className="pointer dim dib mr4" 
+                        onClick={() => this.props.changeDisplay("My Products")}>
+                        My Products
+                    </p>
+                    <p 
                         className="pointer dim dib mr4"
                         onClick={() => this.props.changeDisplay("Settings")}>
                         My Account
