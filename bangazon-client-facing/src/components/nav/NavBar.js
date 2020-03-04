@@ -7,6 +7,7 @@ import ApiManager from '../utility/ApiManager'
 class NavBar extends Component {
     state ={
         searchItem: "",
+        productTypeId: 0,
         productTypes: []
     }
 
@@ -23,7 +24,7 @@ class NavBar extends Component {
         let stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
-      }
+    }
 
     handleCitySearch = () => {
         this.props.history.push(`/city/${this.state.searchItem}`)
@@ -31,6 +32,13 @@ class NavBar extends Component {
 
     handleNameSearch = () => {
         this.props.history.push(`/name/${this.state.searchItem}`)
+    }
+
+    handleProductTypeSelect = evt => {
+        let stateToChange = {}
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
+        this.props.history.push(`/producttype/${this.state.productTypeId}`)
     }
 
     handleLogout = () => {
@@ -70,11 +78,10 @@ class NavBar extends Component {
                             onClick={this.handleCitySearch}>
                             Search by City
                         </button>
-                        <select>
-                            {this.state.productTypes.forEach(productType => {
-                                return (
-                                    <option value={productType.name}>{productType.name}</option>
-                                )
+                        <select id="productTypeId" onChange={this.handleProductTypeSelect}>
+                            <option>select product type</option>
+                            {this.state.productTypes.map(productType => {
+                                return <option key={productType.id} value={productType.id}>{productType.name}</option>
                             })}
                         </select>
                     </div>
