@@ -72,12 +72,9 @@ class NavBar extends Component {
                         </button>
                         <select>
                             {this.state.productTypes.forEach(productType => {
-                                if(this.state.productTypes === []) {
-                                    return <></>
-                                }
-                                else {
-                                    return <option value={productType.name}>{productType.name}</option>
-                                }
+                                return (
+                                    <option value={productType.name}>{productType.name}</option>
+                                )
                             })}
                         </select>
                     </div>
