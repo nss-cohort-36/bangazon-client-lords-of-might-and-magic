@@ -72,7 +72,7 @@ class CompleteOrder extends Component {
                 },
                 "body": JSON.stringify(this.state.completedOrder)
             })
-                .then(this.props.changeDisplay("Shopping Cart"))
+                .then(this.props.changeDisplay("Order Confirmation"))
         }
     }
 
