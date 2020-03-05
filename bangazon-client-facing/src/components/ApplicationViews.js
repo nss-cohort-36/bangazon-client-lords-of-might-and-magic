@@ -37,12 +37,17 @@ class ApplicationViews extends Component {
             return <ProductList {...props} isCitySearch={true} addToOrder={this.props.addToOrder}/>
           }}
           />
-          <Route
-            exact path="/shoppingcart" render={props => {
+        <Route
+          exact path="/shoppingcart" render={props => {
             return <Order {...props} />
           }}
         />
-         <Route
+        <Route 
+          exact path="/myproducts" render={props => {
+            return <ProductList {...props} />
+          }}
+        />
+        <Route
           exact path="/add/paymenttype" render={props => {
             return <PaymentTypeForm {...props} />
           }}
