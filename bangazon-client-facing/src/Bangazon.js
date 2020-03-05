@@ -13,7 +13,7 @@ class Bangazon extends Component {
     emptyCart: true,
     orderId: 0,
     productTypes: [],
-    displayProductTypeFilter: false
+    displayProductTypeFilter: isAuthenticated()
   }
 
   changeDisplay = newDisplay => this.setState({ sideDisplay: newDisplay })
@@ -34,8 +34,10 @@ class Bangazon extends Component {
   }
 
   componentDidMount() {
+    if(isAuthenticated()) {
+      this.getProductTypesForNav()
+    }
     this.getShoppingCartInfo()
-
   }
 
   getShoppingCartInfo = () => {
