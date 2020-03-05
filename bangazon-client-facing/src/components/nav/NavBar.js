@@ -100,7 +100,7 @@ class NavBar extends Component {
                     </p>
                     <p 
                         className="pointer dim dib mr4"
-                        onClick={() => this.props.changeDisplay("Settings")}>
+                        onClick={() => this.props.changeDisplay("My Account")}>
                         My Account
                     </p>
                     {isAuthenticated() 

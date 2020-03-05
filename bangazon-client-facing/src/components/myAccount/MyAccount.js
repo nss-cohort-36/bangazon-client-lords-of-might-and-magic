@@ -1,14 +1,32 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import { ReactComponent as DeleteIcon } from '../../assets/deleteIcon.svg';
 import { isAuthenticated } from "../helpers/simpleAuth"
-import './Settings.css'
+import './MyAccount.css'
+import CustomerList from '../customer/CustomerList'
+import React, { useEffect, useState } from 'react'
 
-export default class Settings extends Component {
-  state = {
-    paymentTypes: []
+export default function MyAccount(props) {
+
+// [variable, function to update state of variable = useState is a hook and the [] is the initial of that variable]
+  const [paymentTypes, setPaymentTypes] = useState([]);
+  const [customers, setCustomers] = useState([]);
+
+
+  const getCustomers = () => {
+    if (isAuthenticated()) {
+      fetch('http://localhost:8000/customers', {
+        "method": "GET",
+        "headers": {
+          "Accept": "application/json",
+          "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
+        }
+      })
+      .then(r => r.json())
+      .then(setCustomers)
+    }
   }
 
-  getPaymentTypes = () => {
+  const getPaymentTypes = () => {
     if (isAuthenticated())
       fetch('http://localhost:8000/paymenttypes', {
         "method": "GET",
@@ -18,10 +36,10 @@ export default class Settings extends Component {
         }
       })
       .then(r => r.json())
-      .then(items => this.setState({paymentTypes: items})) 
+      .then(setPaymentTypes)
     }
 
-  deletePaymentType = id => {
+  const deletePaymentType = id => {
     fetch(`http://localhost:8000/paymenttypes/${id}`, {
       "method": 'DELETE',
       "headers": {
@@ -29,15 +47,16 @@ export default class Settings extends Component {
         "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
       }
     })
-    .then(() => this.getPaymentTypes());
+    .then(getPaymentTypes)
   }
 
-  componentDidMount() {
-    this.getPaymentTypes();
-  }
+  useEffect(getPaymentTypes, []);
+  useEffect(getCustomers, []);
 
-  render() {
+  // render() {
   	return (
+      <>
+      <CustomerList {...props} customers={customers} />
   		<article>
         <details className="w-70-ns w-100 pt2">
           <summary className="pointer dim">
@@ -49,10 +68,10 @@ export default class Settings extends Component {
               <a className="link dim blue" href='/add/paymenttype' title="Add Payment Type Form">
                 Add a Payment Type
               </a>
-            	{this.state.paymentTypes.map(type => {
+            	{paymentTypes.map(type => {
                 return (
                   <div key={type.id}>
-                    <DeleteIcon className='dib pointer red dim pr1' onClick={() => this.deletePaymentType(type.id)}/>
+                    <DeleteIcon className='dib pointer red dim pr1' onClick={() => deletePaymentType(type.id)}/>
                     <p className='dib'>{type.merchant_name} {type.acct_number}</p>
                   </div>
                 )
@@ -60,6 +79,7 @@ export default class Settings extends Component {
           </div>
         </details>
   	  </article>
+      </>
   	)
-  }
+  // }
 }
