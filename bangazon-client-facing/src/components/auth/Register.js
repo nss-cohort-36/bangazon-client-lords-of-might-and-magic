@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { register } from "../helpers/simpleAuth" 
+import { register } from "../helpers/simpleAuth"
 
 export default class Register extends Component {
 
@@ -32,7 +32,10 @@ export default class Register extends Component {
 
     // Make a fetch call with the object as the body of the POST request
     register(newUser)
-    .then(() => this.props.history.push("/"))
+      .then(() => {
+        this.props.getProductTypesForNav()
+        this.props.history.push("/")
+      })
   }
 
   render() {
@@ -101,8 +104,8 @@ export default class Register extends Component {
               required />
           </div>
           <div className="measure">
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className='b dib f6 link br-pill ba ph2 pv1 mv3 black bg-animate hover-bg-light-pink'>
               Register
             </button>
