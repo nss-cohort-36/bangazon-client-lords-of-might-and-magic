@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { ReactComponent as DeleteIcon } from '../../assets/deleteIcon.svg';
 import { isAuthenticated } from "../helpers/simpleAuth"
+import {  withRouter } from 'react-router-dom'
 import './Settings.css'
 
-export default class Settings extends Component {
+class Settings extends Component {
   state = {
     paymentTypes: []
   }
@@ -39,6 +40,7 @@ export default class Settings extends Component {
   render() {
   	return (
   		<article>
+        <h2 className='f5-ns f6 fw3 underline dim pointer' onClick={() => this.props.history.push('/myproducts')}>My Products for Sale</h2>
         <details className="w-70-ns w-100 pt2">
           <summary className="pointer dim">
               <h2 className='f5-ns f6 fw3 underline'>
@@ -63,3 +65,5 @@ export default class Settings extends Component {
   	)
   }
 }
+
+export default withRouter(Settings)

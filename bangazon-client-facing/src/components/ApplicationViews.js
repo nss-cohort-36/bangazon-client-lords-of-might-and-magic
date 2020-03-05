@@ -8,6 +8,7 @@ import PaymentTypeForm from "./paymentType/PaymentTypeForm"
 import SellProductForm from "./product/SellProductForm"
 import { isAuthenticated } from "./helpers/simpleAuth"
 import ProductDetail from "./product/ProductDetail"
+import MyProductList from './product/MyProductList'
 import ApiManager from "./utility/ApiManager"
 
 class ApplicationViews extends Component {
@@ -60,6 +61,13 @@ class ApplicationViews extends Component {
         <Route exact path="/sell-product" render={(props) => {
           if(isAuthenticated()) {
             return <SellProductForm {...props} />
+          } else {
+            return <Redirect to="/" />
+          }
+        }} />
+        <Route exact path="/myproducts" render={(props) => {
+          if(isAuthenticated()) {
+            return <MyProductList {...props} />
           } else {
             return <Redirect to="/" />
           }
