@@ -13,15 +13,9 @@ class Order extends Component {
     }
 
     
-
-    loggedInUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
-
-    deleteProductFromCart = (idArray) => {
-        Promise.all(
-        idArray.forEach(id => {
-            ApiManager.delete("orderproducts", id)
-        }))
-        .then(this.getShoppingCartInfo)
+    deleteProductFromCart = (id) => {
+        ApiManager.delete("orderproducts", id)
+        .then(this.getShoppingCartInfo())
     }
 
     getShoppingCartInfo = () => {
@@ -54,6 +48,8 @@ class Order extends Component {
                                 key={item.id}
                                 item={item}
                                 {...this.props}
+                                deleteProductFromCart={this.deleteProductFromCart}
+                                getShoppingCartInfo={this.props.getShoppingCartInfo}
                             />)
                         
                     }
