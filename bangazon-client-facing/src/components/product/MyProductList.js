@@ -1,6 +1,7 @@
 import React, { Component } from "react"
-import MyProductCard from "./MyProductCart"
+import MyProductCard from "./MyProductCard"
 import { isAuthenticated } from "../helpers/simpleAuth"
+import ApiManager from "../utility/ApiManager"
 
 class MyProductList extends Component {
     // also this contains the form to add an itinerary item
@@ -13,6 +14,13 @@ class MyProductList extends Component {
 
 
     }
+
+    updateInventory = (product, inventoryAdd) => {
+        product.quantity += Number(inventoryAdd)
+        ApiManager.update('products', product, product.id)
+        .then(this.getMyProducts)
+    }
+    
 
     getMyProducts = () => {
         
@@ -42,6 +50,7 @@ class MyProductList extends Component {
                                 key={product.id}
                                 product={product}
                                 addToOrder={this.props.addToOrder}
+                                updateInventory={this.updateInventory}
                             />)
                         }
                     </div>
