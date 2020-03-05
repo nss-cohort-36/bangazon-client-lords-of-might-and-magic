@@ -76,7 +76,8 @@ export default function CustomerEditForm(props) {
     return (
       <form className="form-container">
         <label className="form-label" htmlFor="first_name">First Name</label>
-        <p className="form-desc" id="first_name"> {updatedCustomer.first_name}</p><br />
+        <p className="form-desc" id="first_name"> {updatedCustomer.first_name}</p>
+        <br />
         
         <label className="form-label" htmlFor="last_name">Last Name</label>
         
@@ -85,35 +86,42 @@ export default function CustomerEditForm(props) {
           id = "last_name"
           type="text" name="last_name"
           value={updatedCustomer.last_name} 
-          autoFocus required />< br/>
+          autoFocus required />
         </p>
+        <br />
         <label className="form-label" htmlFor="email">Email</label>
         <p className="form-desc">{updatedCustomer.email}</p>
+        <br />        
         <label className="form-label" htmlFor="username">Username</label>
         <p className="form-desc">{updatedCustomer.username}</p>
+        <br />
         <label className="form-label" htmlFor="address">Address</label>
         <p><input
           onChange={handleInputChange}
           id = "address"    
           type="text" name="address"
           value={updatedCustomer.address} 
-          autoFocus required />< br/>
+          autoFocus required />
         </p>
+        <br />        
         <label className="form-label" htmlFor="city">City   </label>
         <p><input
           onChange={handleInputChange}
           id = "city"
           type="text" name="city"
           value={updatedCustomer.city} 
-          autoFocus required />< br/>
+          autoFocus required />
         </p>
+        <br />
         <label className="form-label" htmlFor="phone">Phone   </label>
-        <input
+        <p><input
           onChange={handleInputChange}
           id = "phone"
           type="text" name="phone"
           value={updatedCustomer.phone} 
-          autoFocus required />< br/>
+          autoFocus required />
+        </p>
+        < br />
 
         <button className="form-button" onClick={handleUpdatedCustomer}>Update Customer</button>
       </form>
