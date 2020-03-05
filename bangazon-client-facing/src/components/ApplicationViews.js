@@ -77,12 +77,12 @@ class ApplicationViews extends Component {
         />
         <Route
           path="/register" render={props => {
-            return <Register {...props} />
+            return <Register getProductTypesForNav={this.props.getProductTypesForNav} {...props} />
           }}
         />
         <Route
           path="/login" render={props => {
-            return <Login {...props} />
+            return <Login getProductTypesForNav={this.props.getProductTypesForNav} {...props} />
           }}
         />
         <Route exact path="/sell-product" render={(props) => {
