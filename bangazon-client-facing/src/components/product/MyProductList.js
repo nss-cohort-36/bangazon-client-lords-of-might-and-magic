@@ -32,6 +32,7 @@ class MyProductList extends Component {
         })
             .then(response => response.json())
             .then((products) => {
+                console.log(products)
                 this.setState({ products: products })
             })
     }

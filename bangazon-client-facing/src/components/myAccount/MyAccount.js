@@ -6,7 +6,7 @@ import CustomerList from '../customer/CustomerList'
 import React, { useEffect, useState } from 'react'
 import {  withRouter } from 'react-router-dom'
 
-export default function MyAccount(props) {
+function MyAccount(props) {
 
 // [variable, function to update state of variable = useState is a hook and the [] is the initial of that variable]
   const [paymentTypes, setPaymentTypes] = useState([]);
