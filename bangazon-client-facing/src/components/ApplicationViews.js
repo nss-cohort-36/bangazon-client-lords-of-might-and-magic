@@ -44,7 +44,7 @@ class ApplicationViews extends Component {
           }}
         />
         <Route 
-          exact path="/myproducts" render={props => {
+          exact path="/products/myproduct" render={props => {
             return <ProductList {...props} />
           }}
         />

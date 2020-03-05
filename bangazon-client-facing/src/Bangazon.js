@@ -34,7 +34,7 @@ class Bangazon extends Component {
   componentDidMount() {
     this.getShoppingCartInfo()
     
-  }
+}
 
   getShoppingCartInfo = () => {
     if (isAuthenticated())
