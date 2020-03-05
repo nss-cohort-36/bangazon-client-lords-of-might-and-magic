@@ -9,6 +9,7 @@ import SellProductForm from "./product/SellProductForm"
 import { isAuthenticated } from "./helpers/simpleAuth"
 import ProductDetail from "./product/ProductDetail"
 import ApiManager from "./utility/ApiManager"
+import CustomerEditForm from "./customer/CustomerEditForm"
 
 class ApplicationViews extends Component {
 
@@ -50,6 +51,11 @@ class ApplicationViews extends Component {
         <Route
           exact path="/add/paymenttype" render={props => {
             return <PaymentTypeForm {...props} />
+          }}
+        />
+         <Route
+          exact path="/customers/:customerId(\d+)/edit" render={props => {
+            return <CustomerEditForm {...props} />
           }}
         />
         <Route
