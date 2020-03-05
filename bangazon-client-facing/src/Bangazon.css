@@ -19,3 +19,15 @@
     margin-left: 32px;
     margin-bottom: 0;
 }
+
+.button-qty-container {
+    display: flex;
+}
+
+.product-card {
+    min-width: 180px !important;
+}
+
+.quantity {
+    margin-left: 5px;
+}
