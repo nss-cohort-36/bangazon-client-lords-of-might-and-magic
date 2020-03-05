@@ -79,7 +79,7 @@ class NavBar extends Component {
                         {(this.props.displayProductTypeFilter)
                             ?
                             <select id="productTypeId" onChange={this.handleProductTypeSelect}>
-                                <option value="all">select product type</option>
+                                <option value="all">all product types</option>
                                 {this.props.productTypes.map(productType => {
                                     return <option key={productType.id} value={productType.id}>{productType.name}</option>
                                 })}
