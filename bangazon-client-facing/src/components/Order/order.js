@@ -22,7 +22,7 @@ class Order extends Component {
         if (isAuthenticated())
             ApiManager.get("orderproducts")
             .then(items => {
-                console.log(items, items.length)
+                // console.log(items, items.length)
                 if (items.length > 0) {
                     this.setState({emptyCart: false })
                 }
