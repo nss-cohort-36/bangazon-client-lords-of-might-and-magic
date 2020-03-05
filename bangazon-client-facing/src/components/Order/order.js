@@ -7,9 +7,7 @@ class Order extends Component {
 
 
     state = {
-        orderProducts: this.props.orderProducts,
-        
-        
+        orderProducts: this.props.orderProducts,  
     }
 
     
