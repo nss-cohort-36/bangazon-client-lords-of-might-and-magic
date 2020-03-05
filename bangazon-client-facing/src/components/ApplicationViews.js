@@ -56,7 +56,7 @@ class ApplicationViews extends Component {
         />
         <Route
           exact path="/producttype/:searchTerm" render={props => {
-            return <ProductList {...props} isCitySearch={true} addToOrder={this.props.addToOrder}/>
+            return <ProductList {...props} isProductTypeFilter={true} addToOrder={this.props.addToOrder}/>
           }}
         />
         <Route
