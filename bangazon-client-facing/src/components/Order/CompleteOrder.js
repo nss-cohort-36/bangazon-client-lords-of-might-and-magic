@@ -46,7 +46,6 @@ class CompleteOrder extends Component {
                 }
             })
                 .then(response => response.json())
-                // .then(response => console.log(response))
                 .then(response => { 
                     this.setState({ completedOrder: response
                  })

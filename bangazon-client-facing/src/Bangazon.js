@@ -33,6 +33,11 @@ class Bangazon extends Component {
 
   }
 
+  deleteProductFromCart = (id) => {
+    ApiManager.delete("orderproducts", id)
+    .then(this.getShoppingCartInfo())
+  }
+
   componentDidMount() {
     if(isAuthenticated()) {
       this.getProductTypesForNav()
@@ -89,7 +94,8 @@ class Bangazon extends Component {
         <NavBar hideProductTypeFilter={this.hideProductTypeFilter} productTypes={this.state.productTypes} displayProductTypeFilter={this.state.displayProductTypeFilter} changeDisplay={this.changeDisplay} />
         <section className="flex avenir">
           <article className="w-70 pv2 ph4">
-            <ApplicationViews getProductTypesForNav={this.getProductTypesForNav} addToOrder={this.addToOrder} />
+            <ApplicationViews getProductTypesForNav={this.getProductTypesForNav} addToOrder={this.addToOrder} getShoppingCartInfo={this.getShoppingCartInfo}
+              deleteProductFromCart={this.deleteProductFromCart}/>
           </article>
           <article className="w-30 bg-light-gray">
             <SidePanel
@@ -100,6 +106,7 @@ class Bangazon extends Component {
               cancelOrder={this.cancelOrder}
               orderId={this.state.orderId}
               getShoppingCartInfo={this.getShoppingCartInfo}
+              deleteProductFromCart={this.deleteProductFromCart}
             />
           </article>
         </section>
