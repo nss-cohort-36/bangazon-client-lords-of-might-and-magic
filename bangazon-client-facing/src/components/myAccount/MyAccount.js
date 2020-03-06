@@ -59,7 +59,7 @@ function MyAccount(props) {
       <>
       <CustomerList {...props} customers={customers} />
   		<article>
-        <h2 className='f5-ns f6 fw3 underline dim pointer' onClick={() => this.props.history.push('/myproducts')}>My Products for Sale</h2>
+        <h2 className='f5-ns f6 fw3 underline dim pointer' onClick={() => props.history.push('/myproducts')}>My Products for Sale</h2>
         <details className="w-70-ns w-100 pt2">
           <summary className="pointer dim">
               <h2 className='f5-ns f6 fw3 underline'>

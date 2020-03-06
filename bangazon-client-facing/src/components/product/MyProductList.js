@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import MyProductCard from "./MyProductCard"
-import { isAuthenticated } from "../helpers/simpleAuth"
 import ApiManager from "../utility/ApiManager"
 
 class MyProductList extends Component {
@@ -32,7 +31,6 @@ class MyProductList extends Component {
         })
             .then(response => response.json())
             .then((products) => {
-                console.log(products)
                 this.setState({ products: products })
             })
     }

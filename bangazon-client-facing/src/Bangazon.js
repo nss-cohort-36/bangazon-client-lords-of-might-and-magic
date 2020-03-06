@@ -69,7 +69,6 @@ class Bangazon extends Component {
   getProductTypesForNav = () => {
     ApiManager.get('producttypes')
     .then(productTypes => {
-      console.log('product types in bangazon: ', productTypes)
       this.setState({
         productTypes: productTypes,
         displayProductTypeFilter: true
