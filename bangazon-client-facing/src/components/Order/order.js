@@ -11,26 +11,26 @@ class Order extends Component {
     }
 
     
-    deleteProductFromCart = (id) => {
-        ApiManager.delete("orderproducts", id)
-        .then(this.getShoppingCartInfo())
-    }
+    // deleteProductFromCart = (id) => {
+    //     ApiManager.delete("orderproducts", id)
+    //     .then(this.getShoppingCartInfo())
+    // }
 
-    getShoppingCartInfo = () => {
-        if (isAuthenticated())
-            ApiManager.get("orderproducts")
-            .then(items => {
-                // console.log(items, items.length)
-                if (items.length > 0) {
-                    this.setState({emptyCart: false })
-                }
-                this.setState({orderProducts: items})})
-                .then(() => {
-                    ApiManager.get('orders')
-                    .then((order) => this.setState({orderId: order.id}))
-                })
+    // getShoppingCartInfo = () => {
+    //     if (isAuthenticated())
+    //         ApiManager.get("orderproducts")
+    //         .then(items => {
+    //             // console.log(items, items.length)
+    //             if (items.length > 0) {
+    //                 this.setState({emptyCart: false })
+    //             }
+    //             this.setState({orderProducts: items})})
+    //             .then(() => {
+    //                 ApiManager.get('orders')
+    //                 .then((order) => this.setState({orderId: order.id}))
+    //             })
         
-    }
+    // }
 
     
 
@@ -46,7 +46,7 @@ class Order extends Component {
                                 key={item.id}
                                 item={item}
                                 {...this.props}
-                                deleteProductFromCart={this.deleteProductFromCart}
+                                deleteProductFromCart={this.props.deleteProductFromCart}
                                 getShoppingCartInfo={this.props.getShoppingCartInfo}
                             />)
                         
