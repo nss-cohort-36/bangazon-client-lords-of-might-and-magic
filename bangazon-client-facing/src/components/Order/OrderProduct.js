@@ -3,6 +3,8 @@ import React, { Component } from "react"
 
 class OrderProduct extends Component {
 
+    
+
     render() {
         return (
             <>
@@ -11,7 +13,7 @@ class OrderProduct extends Component {
                         <span>
                             {this.props.item.product.name}   {this.props.item.product.price}
                         </span>
-                        <button>Delete</button>
+                        <button onClick ={() => {this.props.deleteProductFromCart(this.props.item.id)}} >Delete</button>
                     </p>
                 </section>
 

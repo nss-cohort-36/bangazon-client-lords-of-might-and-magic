@@ -41,12 +41,24 @@ const ApiManager = {
       }
     })
   },
-  my_products: function() {
-    return fetch(`http://localhost:8000/products/my_products`, {
-      "headers": {
+  // my_products: function() {
+  //   return fetch(`http://localhost:8000/products/my_products`, {
+  //     "headers": {
+  //       "Accept": "application/json",
+  //       "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
+  //     }
+  //   })
+  //     .then(response => response.json())
+  // },
+  update: function (endpoint, object, id) {
+    return fetch(`http://localhost:8000/${endpoint}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
         "Accept": "application/json",
         "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
-      }
+      },
+      body: JSON.stringify(object)
     })
       .then(response => response.json())
   }

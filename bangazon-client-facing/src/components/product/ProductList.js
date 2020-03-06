@@ -50,19 +50,26 @@ class ProductList extends Component {
                                             product={product}
                                             addToOrder={this.props.addToOrder}
                                         />)
-                                : this.props.isMyProduct ?
-                                    this.state.products.filter(product => product.customer.includes(this.props.match.params.searchTerm)).map(product =>
-                                        <ProductCard
-                                            key={product.id}
-                                            product={product}
-                                            addToOrder={this.props.addToOrder}
-                                        />)
-                                    : this.state.products.map(product =>
-                                        <ProductCard
-                                            key={product.id}
-                                            product={product}
-                                            addToOrder={this.props.addToOrder}
-                                        />)
+                                    : this.props.isProductTypeFilter ?
+                                        (this.props.match.params.searchTerm !== "all") ?
+                                            this.state.products.filter(product => product.product_type_id === Number(this.props.match.params.searchTerm)).map(product =>
+                                                <ProductCard
+                                                    key={product.id}
+                                                    product={product}
+                                                    addToOrder={this.props.addToOrder}
+                                                />)
+                                                : this.state.products.map(product =>
+                                                    <ProductCard
+                                                        key={product.id}
+                                                        product={product}
+                                                        addToOrder={this.props.addToOrder}
+                                                    />)
+                                        : this.state.products.map(product =>
+                                            <ProductCard
+                                                key={product.id}
+                                                product={product}
+                                                addToOrder={this.props.addToOrder}
+                                            />)
                         }
                     </div>
                 </article>

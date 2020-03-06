@@ -27,6 +27,7 @@ export default class Login extends Component {
 
       login(credentials)
       .then(() => {
+        this.props.getProductTypesForNav()
         this.props.history.push("/")
       })
     }

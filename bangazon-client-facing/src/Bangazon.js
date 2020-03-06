@@ -10,8 +10,10 @@ class Bangazon extends Component {
   state = {
     sideDisplay: "Shopping Cart",
     orderProducts: [],
-    emptyCart:true,
-    orderId: 0
+    emptyCart: true,
+    orderId: 0,
+    productTypes: [],
+    displayProductTypeFilter: isAuthenticated()
   }
 
   changeDisplay = newDisplay => this.setState({ sideDisplay: newDisplay })
@@ -25,60 +27,85 @@ class Bangazon extends Component {
           product_id: productId
         }
         return ApiManager.post("orderproducts", newOrderProduct)
-        .then(() => this.getShoppingCartInfo())
+          .then(() => this.getShoppingCartInfo())
       }
       )
 
   }
 
+  deleteProductFromCart = (id) => {
+    ApiManager.delete("orderproducts", id)
+    .then(this.getShoppingCartInfo())
+  }
+
   componentDidMount() {
+    if(isAuthenticated()) {
+      this.getProductTypesForNav()
+    }
     this.getShoppingCartInfo()
-    
-}
+  }
 
   getShoppingCartInfo = () => {
     if (isAuthenticated())
-        ApiManager.get("orderproducts")
+      ApiManager.get("orderproducts")
         .then(items => {
-            if (items.length > 0) {
-                this.setState({emptyCart: false })
-            } else {
-              this.setState({emptyCart: true })
-            }
-            this.setState({orderProducts: items})})
-            .then(() => {
-                ApiManager.get('orders')
-                .then((order) => this.setState({orderId: order.id}))
-            })
-    
-}
+          if (items.length > 0) {
+            this.setState({ emptyCart: false })
+          } else {
+            this.setState({ emptyCart: true })
+          }
+          this.setState({ orderProducts: items })
+        })
+        .then(() => {
+          ApiManager.get('orders')
+            .then((order) => this.setState({ orderId: order.id }))
+        })
 
-cancelOrder = (orderId) => {
-  ApiManager.delete("orders", orderId)
-  .then(() => {
-      this.setState({emptyCart: true})
-      this.getShoppingCartInfo()
-  })
-}
+  }
 
+  cancelOrder = (orderId) => {
+    ApiManager.delete("orders", orderId)
+      .then(() => {
+        this.setState({ emptyCart: true })
+        this.getShoppingCartInfo()
+      })
+  }
+
+  getProductTypesForNav = () => {
+    ApiManager.get('producttypes')
+    .then(productTypes => {
+      this.setState({
+        productTypes: productTypes,
+        displayProductTypeFilter: true
+      })
+    })
+  }
+
+  hideProductTypeFilter = () => {
+    this.setState({
+      displayProductTypeFilter: false
+    })
+  }
 
   render() {
     return (
       <>
-        <NavBar changeDisplay={this.changeDisplay} />
+        <NavBar hideProductTypeFilter={this.hideProductTypeFilter} productTypes={this.state.productTypes} displayProductTypeFilter={this.state.displayProductTypeFilter} changeDisplay={this.changeDisplay} />
         <section className="flex avenir">
           <article className="w-70 pv2 ph4">
-            <ApplicationViews addToOrder={this.addToOrder} />
+            <ApplicationViews getProductTypesForNav={this.getProductTypesForNav} addToOrder={this.addToOrder} getShoppingCartInfo={this.getShoppingCartInfo}
+              deleteProductFromCart={this.deleteProductFromCart}/>
           </article>
           <article className="w-30 bg-light-gray">
-            <SidePanel 
-            changeDisplay={this.changeDisplay} 
-            displayTitle={this.state.sideDisplay} 
-            orderProducts={this.state.orderProducts} 
-            emptyCart={this.state.emptyCart} 
-            cancelOrder={this.cancelOrder} 
-            orderId={this.state.orderId} 
-            getShoppingCartInfo={this.getShoppingCartInfo}
+            <SidePanel
+              changeDisplay={this.changeDisplay}
+              displayTitle={this.state.sideDisplay}
+              orderProducts={this.state.orderProducts}
+              emptyCart={this.state.emptyCart}
+              cancelOrder={this.cancelOrder}
+              orderId={this.state.orderId}
+              getShoppingCartInfo={this.getShoppingCartInfo}
+              deleteProductFromCart={this.deleteProductFromCart}
             />
           </article>
         </section>

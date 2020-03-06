@@ -7,38 +7,30 @@ class Order extends Component {
 
 
     state = {
-        orderProducts: this.props.orderProducts,
-        
-        
+        orderProducts: this.props.orderProducts,  
     }
 
     
+    // deleteProductFromCart = (id) => {
+    //     ApiManager.delete("orderproducts", id)
+    //     .then(this.getShoppingCartInfo())
+    // }
 
-    loggedInUserId = () => JSON.parse(localStorage.getItem("credentials")).userId
-
-    deleteProductFromCart = (idArray) => {
-        Promise.all(
-        idArray.forEach(id => {
-            ApiManager.delete("orderproducts", id)
-        }))
-        .then(this.getShoppingCartInfo)
-    }
-
-    getShoppingCartInfo = () => {
-        if (isAuthenticated())
-            ApiManager.get("orderproducts")
-            .then(items => {
-                console.log(items, items.length)
-                if (items.length > 0) {
-                    this.setState({emptyCart: false })
-                }
-                this.setState({orderProducts: items})})
-                .then(() => {
-                    ApiManager.get('orders')
-                    .then((order) => this.setState({orderId: order.id}))
-                })
+    // getShoppingCartInfo = () => {
+    //     if (isAuthenticated())
+    //         ApiManager.get("orderproducts")
+    //         .then(items => {
+    //             // console.log(items, items.length)
+    //             if (items.length > 0) {
+    //                 this.setState({emptyCart: false })
+    //             }
+    //             this.setState({orderProducts: items})})
+    //             .then(() => {
+    //                 ApiManager.get('orders')
+    //                 .then((order) => this.setState({orderId: order.id}))
+    //             })
         
-    }
+    // }
 
     
 
@@ -54,6 +46,8 @@ class Order extends Component {
                                 key={item.id}
                                 item={item}
                                 {...this.props}
+                                deleteProductFromCart={this.props.deleteProductFromCart}
+                                // getShoppingCartInfo={this.props.getShoppingCartInfo}
                             />)
                         
                     }
