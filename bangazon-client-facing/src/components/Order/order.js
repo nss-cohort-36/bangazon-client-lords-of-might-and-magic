@@ -47,7 +47,7 @@ class Order extends Component {
                                 item={item}
                                 {...this.props}
                                 deleteProductFromCart={this.props.deleteProductFromCart}
-                                getShoppingCartInfo={this.props.getShoppingCartInfo}
+                                // getShoppingCartInfo={this.props.getShoppingCartInfo}
                             />)
                         
                     }

@@ -62,7 +62,7 @@ class ApplicationViews extends Component {
         />
         <Route
           exact path="/shoppingcart" render={props => {
-            return <Order {...props} deleteProductFromCart={this.props.deleteProductFromCart} getShoppingCartInfo={this.props.getShoppingCartInfo}/>
+            return <Order {...props} deleteProductFromCart={this.props.deleteProductFromCart} />
           }}
         />
         <Route
