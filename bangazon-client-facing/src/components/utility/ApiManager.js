@@ -40,6 +40,15 @@ const ApiManager = {
         "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
       }
     })
+  },
+  my_products: function() {
+    return fetch(`http://localhost:8000/products/my_products`, {
+      "headers": {
+        "Accept": "application/json",
+        "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
+      }
+    })
+      .then(response => response.json())
   }
 }
 

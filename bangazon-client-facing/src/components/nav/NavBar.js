@@ -100,7 +100,7 @@ class NavBar extends Component {
                     </p>
                     <p 
                         className="pointer dim dib mr4"
-                        onClick={() => this.props.changeDisplay("My Products")}>
+                        onClick={() => this.props.history.push('/products/my_products')}>
                         My Products
                     </p>
                     <p 

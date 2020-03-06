@@ -10,6 +10,7 @@ import { isAuthenticated } from "./helpers/simpleAuth"
 import ProductDetail from "./product/ProductDetail"
 import ApiManager from "./utility/ApiManager"
 import CustomerEditForm from "./customer/CustomerEditForm"
+import MyProducts from "./myProduct/MyProducts"
 
 class ApplicationViews extends Component {
 
@@ -44,8 +45,8 @@ class ApplicationViews extends Component {
           }}
         />
         <Route 
-          exact path="/products/myproduct" render={props => {
-            return <ProductList {...props} />
+          exact path="/products/my_products" render={props => {
+            return <MyProducts {...props} />
           }}
         />
         <Route
