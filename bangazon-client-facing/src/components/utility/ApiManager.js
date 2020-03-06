@@ -40,6 +40,18 @@ const ApiManager = {
         "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
       }
     })
+  },
+  update: function (endpoint, object, id) {
+    return fetch(`http://localhost:8000/${endpoint}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
+      },
+      body: JSON.stringify(object)
+    })
+      .then(response => response.json())
   }
 }
 
