@@ -10,22 +10,22 @@ function MyAccount(props) {
 
 // [variable, function to update state of variable = useState is a hook and the [] is the initial of that variable]
   const [paymentTypes, setPaymentTypes] = useState([]);
-  const [customers, setCustomers] = useState([]);
+  // const [customers, setCustomers] = useState([]);
 
 
-  const getCustomers = () => {
-    if (isAuthenticated()) {
-      fetch('http://localhost:8000/customers', {
-        "method": "GET",
-        "headers": {
-          "Accept": "application/json",
-          "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
-        }
-      })
-      .then(r => r.json())
-      .then(setCustomers)
-    }
-  }
+  // const getCustomers = () => {
+  //   if (isAuthenticated()) {
+  //     fetch('http://localhost:8000/customers', {
+  //       "method": "GET",
+  //       "headers": {
+  //         "Accept": "application/json",
+  //         "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
+  //       }
+  //     })
+  //     .then(r => r.json())
+  //     .then(setCustomers)
+  //   }
+  // }
 
   const getPaymentTypes = () => {
     if (isAuthenticated())
@@ -52,12 +52,13 @@ function MyAccount(props) {
   }
 
   useEffect(getPaymentTypes, []);
-  useEffect(getCustomers, []);
+  // useEffect(props.getCustomers, []);
 
   // render() {
+    if (isAuthenticated()) {
   	return (
       <>
-      <CustomerList {...props} customers={customers} />
+      <CustomerList {...props} customers={props.customers} />
   		<article>
         <h2 className='f5-ns f6 fw3 underline dim pointer' onClick={() => props.history.push('/myproducts')}>My Products for Sale</h2>
         <h2 className='f5-ns f6 fw3 underline dim pointer' onClick={() => props.history.push('/pastorders')}>Past Orders</h2>
@@ -84,6 +85,12 @@ function MyAccount(props) {
   	  </article>
       </>
   	)
+    } else {
+      return(
+        <>
+        </>
+      )
+    }
   }
 
 export default withRouter(MyAccount)

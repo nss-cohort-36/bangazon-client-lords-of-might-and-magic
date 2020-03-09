@@ -13,7 +13,8 @@ class Bangazon extends Component {
     emptyCart: true,
     orderId: 0,
     productTypes: [],
-    displayProductTypeFilter: isAuthenticated()
+    displayProductTypeFilter: isAuthenticated(),
+    customers: []
   }
 
   changeDisplay = newDisplay => this.setState({ sideDisplay: newDisplay })
@@ -33,6 +34,23 @@ class Bangazon extends Component {
 
   }
 
+    // const [customers, setCustomers] = useState([]);
+
+  // update account profile auto refreshes
+  getCustomers = () => {
+    if (isAuthenticated()) {
+      fetch('http://localhost:8000/customers', {
+        "method": "GET",
+        "headers": {
+          "Accept": "application/json",
+          "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
+        }
+      })
+      .then(r => r.json())
+      .then(customers => this.setState({customers: customers}))
+    }
+  }
+
   deleteProductFromCart = (id) => {
     ApiManager.delete("orderproducts", id)
     .then(this.getShoppingCartInfo())
@@ -43,6 +61,8 @@ class Bangazon extends Component {
       this.getProductTypesForNav()
     }
     this.getShoppingCartInfo()
+    this.getCustomers()
+
   }
 
   getShoppingCartInfo = () => {
@@ -94,7 +114,9 @@ class Bangazon extends Component {
         <section className="flex avenir">
           <article className="w-70 pv2 ph4">
             <ApplicationViews getProductTypesForNav={this.getProductTypesForNav} addToOrder={this.addToOrder} getShoppingCartInfo={this.getShoppingCartInfo}
-              deleteProductFromCart={this.deleteProductFromCart}/>
+              deleteProductFromCart={this.deleteProductFromCart}
+              getCustomers={this.getCustomers}
+              customers={this.state.customers}/>
           </article>
           <article className="w-30 bg-light-gray">
             <SidePanel
@@ -106,6 +128,8 @@ class Bangazon extends Component {
               orderId={this.state.orderId}
               getShoppingCartInfo={this.getShoppingCartInfo}
               deleteProductFromCart={this.deleteProductFromCart}
+              getCustomers={this.getCustomers}
+              customers={this.state.customers}
             />
           </article>
         </section>
