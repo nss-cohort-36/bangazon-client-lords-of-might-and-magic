@@ -73,7 +73,7 @@ class ApplicationViews extends Component {
         />
          <Route
           exact path="/customers/:customerId(\d+)/edit" render={props => {
-            return <CustomerEditForm {...props} />
+            return <CustomerEditForm {...props} customers={this.props.customers} getCustomers={this.props.getCustomers}/>
           }}
         />
         <Route
