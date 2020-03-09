@@ -11,6 +11,7 @@ import ProductDetail from "./product/ProductDetail"
 import MyProductList from './product/MyProductList'
 import ApiManager from "./utility/ApiManager"
 import CustomerEditForm from "./customer/CustomerEditForm"
+import MyOrders from './Order/MyOrders'
 // import MyProducts from "./myProduct/MyProducts"
 
 class ApplicationViews extends Component {
@@ -88,7 +89,7 @@ class ApplicationViews extends Component {
         />
         <Route
           path="/login" render={props => {
-            return <Login getProductTypesForNav={this.props.getProductTypesForNav} {...props} />
+            return <Login getProductTypesForNav={this.props.getProductTypesForNav} getShoppingCartInfo={this.props.getShoppingCartInfo} getCustomers={this.props.getCustomers} {...props} />
           }}
         />
         <Route exact path="/sell-product" render={(props) => {
@@ -101,6 +102,13 @@ class ApplicationViews extends Component {
         <Route exact path="/myproducts" render={(props) => {
           if(isAuthenticated()) {
             return <MyProductList {...props} />
+          } else {
+            return <Redirect to="/" />
+          }
+        }} />
+        <Route exact path="/pastorders" render={(props) => {
+          if(isAuthenticated()) {
+            return <MyOrders {...props} />
           } else {
             return <Redirect to="/" />
           }

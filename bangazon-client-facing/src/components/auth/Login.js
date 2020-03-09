@@ -29,6 +29,8 @@ export default class Login extends Component {
       .then(() => {
         this.props.getProductTypesForNav()
         this.props.history.push("/")
+        this.props.getShoppingCartInfo()
+        this.props.getCustomers()
       })
     }
 
