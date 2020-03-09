@@ -24,9 +24,9 @@ export default props => {
         <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow' onClick={() => props.addToOrder(id)}>
           Add to Cart
         </button>
-        <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow' onClick={() => props.deleteFromMyProduct(id)}>
+        {/* <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow' onClick={() => props.deleteFromMyProduct(id)}>
           delete
-        </button>
+        </button> */}
       </div>
     </article>
   )
