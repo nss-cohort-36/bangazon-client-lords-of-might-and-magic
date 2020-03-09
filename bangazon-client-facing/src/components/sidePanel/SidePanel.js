@@ -9,7 +9,7 @@ export default props => {
 
     const currDisplay = () => {
         if (isAuthenticated()) {
-        if (props.displayTitle === "My Account") return <MyAccount changeDisplay={props.changeDisplay} {...props}/>
+        if (props.displayTitle === "My Account") return <MyAccount changeDisplay={props.changeDisplay} customers={props.customers} {...props}/>
         if (props.displayTitle === "Complete Order") return <CompleteOrder changeDisplay={props.changeDisplay} getShoppingCartInfo={props.getShoppingCartInfo}/>
         if (props.displayTitle === "Order Confirmation") return <Confirmation changeDisplay={props.changeDisplay} />
         else return <Order changeDisplay={props.changeDisplay} orderProducts={props.orderProducts} emptyCart={props.emptyCart} cancelOrder={props.cancelOrder} orderId={props.orderId} deleteProductFromCart={props.deleteProductFromCart}/>

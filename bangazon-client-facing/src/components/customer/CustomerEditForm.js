@@ -35,8 +35,10 @@ export default function CustomerEditForm(props) {
                 'email': r[0].user.email,
                 'username': r[0].user.username
             })
+            return 
+        })
+
         }
-        )}
     }
 
     const handleInputChange = evt => {
@@ -67,8 +69,9 @@ export default function CustomerEditForm(props) {
                 updateCustomer
             )
         })
-        // .then(history.push('/myaccount'))
-        // return
+        .then(() => props.getCustomers())
+        .then(window.alert("You have successfully updated your profile"))
+        .then(history.push('/'))
     }
 
     useEffect(getUpdatedCustomer, [])

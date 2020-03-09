@@ -74,7 +74,7 @@ class ApplicationViews extends Component {
         />
          <Route
           exact path="/customers/:customerId(\d+)/edit" render={props => {
-            return <CustomerEditForm {...props} />
+            return <CustomerEditForm {...props} customers={this.props.customers} getCustomers={this.props.getCustomers}/>
           }}
         />
         <Route
@@ -84,7 +84,7 @@ class ApplicationViews extends Component {
         />
         <Route
           path="/login" render={props => {
-            return <Login getProductTypesForNav={this.props.getProductTypesForNav} getShoppingCartInfo={this.props.getShoppingCartInfo} {...props} />
+            return <Login getProductTypesForNav={this.props.getProductTypesForNav} getShoppingCartInfo={this.props.getShoppingCartInfo} getCustomers={this.props.getCustomers} {...props} />
           }}
         />
         <Route exact path="/sell-product" render={(props) => {
