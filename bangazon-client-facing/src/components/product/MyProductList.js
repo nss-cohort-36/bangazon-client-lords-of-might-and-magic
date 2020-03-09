@@ -23,7 +23,7 @@ class MyProductList extends Component {
 
     getMyProducts = () => {
         
-        fetch(`http://localhost:8000/products/0`, {
+        fetch(`http://localhost:8000/products`, {
             "headers": {
                 "Accept": "application/json",
                 "Authorization": `Token ${sessionStorage.getItem("bangazon_token")}`
@@ -33,6 +33,11 @@ class MyProductList extends Component {
             .then((products) => {
                 this.setState({ products: products })
             })
+    }
+
+    deleteProducts = (product) => {
+        ApiManager.delete('products', product.id)
+        .then(this.getMyProducts)
     }
 
 
@@ -50,6 +55,7 @@ class MyProductList extends Component {
                                 product={product}
                                 addToOrder={this.props.addToOrder}
                                 updateInventory={this.updateInventory}
+                                deleteProducts={this.deleteProducts}
                             />)
                         }
                     </div>
