@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import './NavBar.css'
-import { isAuthenticated, logout } from "../helpers/simpleAuth"
+import {isAuthenticated, logout} from "../helpers/simpleAuth"
 import ApiManager from '../utility/ApiManager'
 
 class NavBar extends Component {
-    state = {
+    state ={
         searchItem: "",
-        productTypeId: 0
+        productTypeId: 0,
+        productTypes: []
     }
 
     componentDidMount() {
-
+        ApiManager.get('producttypes')
+        .then(productTypeList => {
+            this.setState({
+                productTypes: productTypeList
+            })
+        })
     }
 
     handleInputChange = (evt) => {
@@ -98,7 +104,12 @@ class NavBar extends Component {
                         onClick={() => this.props.changeDisplay("Shopping Cart")}>
                         Shopping Cart
                     </p>
-                    <p
+                    {/* <p
+                        className="pointer dim dib mr4"
+                        onClick={() => this.props.history.push('/products/my_products')}>
+                        My Products
+                    </p> */}
+                    <p 
                         className="pointer dim dib mr4"
                         onClick={() => this.props.changeDisplay("My Account")}>
                         My Account
