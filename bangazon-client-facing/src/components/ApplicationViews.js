@@ -84,7 +84,7 @@ class ApplicationViews extends Component {
         />
         <Route
           path="/login" render={props => {
-            return <Login getProductTypesForNav={this.props.getProductTypesForNav} {...props} />
+            return <Login getProductTypesForNav={this.props.getProductTypesForNav} getShoppingCartInfo={this.props.getShoppingCartInfo} {...props} />
           }}
         />
         <Route exact path="/sell-product" render={(props) => {
