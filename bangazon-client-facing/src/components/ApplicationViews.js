@@ -11,11 +11,7 @@ import ProductDetail from "./product/ProductDetail"
 import MyProductList from './product/MyProductList'
 import ApiManager from "./utility/ApiManager"
 import CustomerEditForm from "./customer/CustomerEditForm"
-<<<<<<< HEAD
-import MyOrders from './Order/MyOrders'
-=======
 // import MyProducts from "./myProduct/MyProducts"
->>>>>>> 9400142fadd63e21b00e027b86da7fcc0d292598
 
 class ApplicationViews extends Component {
 
