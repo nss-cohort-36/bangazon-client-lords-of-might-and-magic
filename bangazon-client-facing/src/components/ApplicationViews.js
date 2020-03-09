@@ -11,7 +11,7 @@ import ProductDetail from "./product/ProductDetail"
 import MyProductList from './product/MyProductList'
 import ApiManager from "./utility/ApiManager"
 import CustomerEditForm from "./customer/CustomerEditForm"
-import MyProducts from "./myProduct/MyProducts"
+// import MyProducts from "./myProduct/MyProducts"
 
 class ApplicationViews extends Component {
 

@@ -37,6 +37,11 @@ class MyProductCard extends Component {
                             Add To Inventory
                         </button>
                     </div>
+                    <div>
+                        <button onClick={() => this.props.deleteProducts(this.props.product)} className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow'>
+                            Delete Product
+                        </button>
+                    </div>
                 </div>
             </article>
         )

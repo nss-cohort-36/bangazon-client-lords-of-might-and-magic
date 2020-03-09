@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import './NavBar.css'
-<<<<<<< HEAD
 import {isAuthenticated, logout} from "../helpers/simpleAuth"
 import ApiManager from '../utility/ApiManager'
 
@@ -19,19 +18,6 @@ class NavBar extends Component {
                 productTypes: productTypeList
             })
         })
-=======
-import { isAuthenticated, logout } from "../helpers/simpleAuth"
-import ApiManager from '../utility/ApiManager'
-
-class NavBar extends Component {
-    state = {
-        searchItem: "",
-        productTypeId: 0
-    }
-
-    componentDidMount() {
-
->>>>>>> master
     }
 
     handleInputChange = (evt) => {
