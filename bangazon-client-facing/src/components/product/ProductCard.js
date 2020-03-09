@@ -1,10 +1,10 @@
 import React from "react";
 
 export default props => {
-  const { image_path, name, id, price, description, inventory } = props.product;
+  const { image_path, name, id, price, description, } = props.product;
 
   return (
-    <article className="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l ma3 product-card">
+    <article className="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l ma3">
       <img 
         src={image_path}
         className="db w-100 br2 br--top"
@@ -21,12 +21,12 @@ export default props => {
           </div>
         </div>
         <p className="f6 lh-copy measure mt2 mid-gray">{description}</p>
-        <div className="button-qty-container">
-          <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow' onClick={() => props.addToOrder(id)}>
-            Add to Cart
-          </button>
-          <div className="quantity">Qty: {inventory}</div>
-        </div>
+        <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow' onClick={() => props.addToOrder(id)}>
+          Add to Cart
+        </button>
+        {/* <button className='dib f6 link br-pill ba ph2 pv1 mb2 black bg-animate hover-bg-light-yellow' onClick={() => props.deleteFromMyProduct(id)}>
+          delete
+        </button> */}
       </div>
     </article>
   )

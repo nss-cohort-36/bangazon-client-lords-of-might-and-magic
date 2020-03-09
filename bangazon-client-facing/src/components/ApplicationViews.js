@@ -11,6 +11,7 @@ import ProductDetail from "./product/ProductDetail"
 import MyProductList from './product/MyProductList'
 import ApiManager from "./utility/ApiManager"
 import CustomerEditForm from "./customer/CustomerEditForm"
+// import MyProducts from "./myProduct/MyProducts"
 
 class ApplicationViews extends Component {
 
@@ -55,7 +56,11 @@ class ApplicationViews extends Component {
           exact path="/city/:searchTerm" render={props => {
             return <ProductList {...props} isCitySearch={true} addToOrder={this.addToOrder} />
           }}
-        />
+          />
+        {/* <Route 
+          exact path="/products/my_products" render={props => {
+            return <MyProducts {...props} />
+        /> */}
         <Route
           exact path="/producttype/:searchTerm" render={props => {
             return <ProductList {...props} isProductTypeFilter={true} addToOrder={this.props.addToOrder}/>
