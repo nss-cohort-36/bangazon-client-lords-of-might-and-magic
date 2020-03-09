@@ -29,7 +29,10 @@ class SellProductForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()   
-        if (!event.target.checkValidity()){
+        const format = /[!@#$%^&*()]/
+        if (format.test(this.state.name) || format.test(this.state.description)) {
+            window.alert("Special characters (!@#$%^&*()) are not allowed in the name or description")
+        }else if(!event.target.checkValidity()){
             return alert('please fill out form properly')
         }else{
             const newProduct = {
